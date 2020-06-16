@@ -1,0 +1,102 @@
+openapi: 3.0.0
+
+info:
+  title: Cubux.net SelfBusy sync API
+  description: API to sync SelfBusy client with cubux.net server.
+  version: '2.0'
+
+servers:
+  - url: 'https://test.cubux.net'
+    description: Test API server
+  - url: 'https://app.cubux.net'
+    description: Production API server (no release yet)
+
+tags:
+  - name: team
+    description: Team data
+
+paths:
+  /api/v2/selfbusy/team/{teamUuid}:
+    get:
+      parameters:
+        - in: path
+          name: teamUuid
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Team UUID
+      tags:
+        - team
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+
+components:
+  schemas:
+    Cubux.MaterialSource:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 1
+          maxLength: 128
+        is_hidden:
+          type: boolean
+          default: false
+      required:
+        - name
+      description:
+        Material as uncountable resource. Used for suggestions and relations
+        with other objects.
+
+    Cubux.MeasureUnit:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 1
+          maxLength: 32
+        source_uuid:
+          type: string
+          format: uuid
+          nullable: true
+          default: null
+          description:
+            Optional link to `Cubux.MaterialSource`. When assigned, this unit
+            can be used only for specific source material.
+        eq_unit_uuid:
+          type: string
+          format: uuid
+          nullable: true
+          default: null
+          description:
+            'Optional link to base unit. Example: a kilogram should be linked to 1000 gram.'
+        eq_value:
+          type: number
+          minimum: 1e-10
+          maximum: 9e9
+          nullable: true
+          default: null
+          description:
+            Quantity of base unit when `eq_unit_uuid` assigned.
+        is_hidden:
+          type: boolean
+          default: false
+      required:
+        - name
+      description:
+        Measure unit.
