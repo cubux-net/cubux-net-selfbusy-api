@@ -6,9 +6,9 @@ info:
   version: '2.0'
 
 servers:
-  - url: 'https://test.cubux.net'
+  - url: 'https://test.cubux.net/api/v2/selfbusy/sync'
     description: Test API server
-  - url: 'https://app.cubux.net'
+  - url: 'https://app.cubux.net/api/v2/selfbusy/sync'
     description: Production API server (no release yet)
 
 tags:
@@ -16,31 +16,306 @@ tags:
     description: Team data
 
 paths:
-  /api/v2/selfbusy/team/{teamUuid}:
+  /team/{teamUuid}:
     get:
       parameters:
-        - in: path
-          name: teamUuid
-          schema:
-            type: string
-            format: uuid
-          required: true
-          description: Team UUID
+        - $ref: '#/components/parameters/teamUuid_path'
       tags:
         - team
+      security:
+        - bearerAuth: []
+      summary: Team data snapshot
       responses:
         '200':
-          description: ''
+          description: Actual data given from server cache
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  data:
-                    type: object
+                allOf:
+                  - $ref: '#/components/schemas/Sync.ResponseData'
+                  - type: object
+                    properties:
+                      data:
+                        $ref: '#/components/schemas/Cubux.Team.Snapshot'
+        '202':
+          $ref: '#/components/responses/202'
+        '304':
+          $ref: '#/components/responses/304'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          description: Access denied to underlying team
+        '404':
+          description: Team not found
+
+  /team/{teamUuid}/since/{revisionUuid}:
+    get:
+      parameters:
+        - $ref: '#/components/parameters/teamUuid_path'
+        - $ref: '#/components/parameters/revisionUuid_path'
+      tags:
+        - team
+      security:
+        - bearerAuth: []
+      summary: Team data diff
+      description: Get changes diff since specified base revision
+      responses:
+        '200':
+          description: Actual data given from server cache
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Sync.ResponseData'
+                  - type: object
+                    properties:
+                      data:
+                        $ref: '#/components/schemas/Cubux.Team.Diff'
+        '202':
+          $ref: '#/components/responses/202'
+        '204':
+          $ref: '#/components/responses/204'
+        '304':
+          $ref: '#/components/responses/304'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          description: Access denied to underlying team
+        '404':
+          description: Team not found
+        '410':
+          $ref: '#/components/responses/410-diff'
+
+  /team/{teamUuid}/ticket/{ticketUuid}:
+    get:
+      parameters:
+        - $ref: '#/components/parameters/teamUuid_path'
+        - $ref: '#/components/parameters/ticketUuid_path'
+      tags:
+        - team
+      security:
+        - bearerAuth: []
+      summary: Get ticket details
+      responses:
+        '200':
+          description: Ticket details
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Sync.ResponseTicketDetails'
+                  - type: object
+                    properties:
+                      data:
+                        oneOf:
+                          - $ref: '#/components/schemas/Cubux.Team.Snapshot'
+                          - $ref: '#/components/schemas/Cubux.Team.Diff'
+                          - $ref: '#/components/schemas/null'
+        '304':
+          $ref: '#/components/responses/304'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          description: Access denied to underlying team
+        '404':
+          description: Team not found
+        '410':
+          $ref: '#/components/responses/410-ticket'
 
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+
+  parameters:
+    teamUuid_path:
+      in: path
+      name: teamUuid
+      schema:
+        type: string
+        format: uuid
+      required: true
+
+    revisionUuid_path:
+      in: path
+      name: revisionUuid
+      schema:
+        type: string
+        format: uuid
+      required: true
+
+    ticketUuid_path:
+      in: path
+      name: ticketUuid
+      schema:
+        type: string
+        format: uuid
+      required: true
+
   schemas:
+    null:
+      type: object
+      description: Just `null` value. This a a stub for OpenAPI/3.1 `"null"` type.
+      nullable: true
+      default: null
+      example: null
+
+    Sync.ErrorMessage:
+      type: object
+      properties:
+        level:
+          type: string
+        code:
+          type: string
+        message:
+          type: string
+
+    Sync.ObjectErrors:
+      type: object
+      properties:
+        section:
+          type: string
+        entry:
+          type: string
+          nullable: true
+        key:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                oneOf:
+                  - type: string
+                  - type: integer
+                  - type: object
+          nullable: true
+        attribute:
+          type: string
+          nullable: true
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sync.ErrorMessage'
+
+    Sync.Ticket:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+            - new
+            - work
+            - done
+            - failed
+            - aborted
+        status_changed_at:
+          type: string
+          format: date-time
+        errors:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/Sync.ObjectErrors'
+        client_id:
+          type: string
+          nullable: true
+        client_serial:
+          type: integer
+          format: int64
+          nullable: true
+      example:
+        uuid: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        created_at: '2020-06-01T12:34:56Z'
+        status: done
+        status_changed_at: '2020-06-01T12:35:37Z'
+        errors: []
+        client_id: null
+        client_serial: null
+
+    Sync.Data:
+      type: object
+      properties:
+        revision:
+          type: string
+          format: uuid
+        serial:
+          type: integer
+          format: int64
+        created_at:
+          type: string
+          format: date-time
+        objects:
+          type: object
+
+    Sync.DataDiff:
+      allOf:
+        - $ref: '#/components/schemas/Sync.Data'
+        - type: object
+          properties:
+            base_revision:
+              type: string
+              format: uuid
+            deleted_objects:
+              type: object
+
+    Sync.ResponseTicketCreated:
+      type: object
+      properties:
+        ticket:
+          $ref: '#/components/schemas/Sync.Ticket'
+        data:
+          $ref: '#/components/schemas/null'
+
+    Sync.ResponseTicketDetails:
+      type: object
+      properties:
+        ticket:
+          $ref: '#/components/schemas/Sync.Ticket'
+        data:
+          oneOf:
+            - $ref: '#/components/schemas/Sync.Data'
+            - $ref: '#/components/schemas/Sync.DataDiff'
+            - $ref: '#/components/schemas/null'
+          description:
+            Type depends of the ticket `status` and original request, which did
+            produce the ticket. When ticket `status` is `"done"`, `data` will
+            contain data, which was originally requested. Otherwise `data` will
+            be `null`.
+
+    Sync.ResponseData:
+      type: object
+      properties:
+        ticket:
+          $ref: '#/components/schemas/null'
+        data:
+          $ref: '#/components/schemas/Sync.Data'
+
+    UuidKey:
+      oneOf:
+        - type: string
+          format: uuid
+        - type: object
+          properties:
+            uuid:
+              type: string
+              format: uuid
+          required:
+            - uuid
+
+    UuidKeysList:
+      type: array
+      items:
+        $ref: '#/components/schemas/UuidKey'
+      example:
+        - 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        - 26854f64-7427-4389-b273-839438462854
+
     Cubux.MaterialSource:
       type: object
       properties:
@@ -84,7 +359,8 @@ components:
           nullable: true
           default: null
           description:
-            'Optional link to base unit. Example: a kilogram should be linked to 1000 gram.'
+            'Optional link to base unit. Example: a kilogram should be linked to
+            1000 gram.'
         eq_value:
           type: number
           minimum: 1e-10
@@ -100,3 +376,66 @@ components:
         - name
       description:
         Measure unit.
+
+    Cubux.Team.Objects:
+      type: object
+      properties:
+        material_source:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.MaterialSource'
+        measure_unit:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.MeasureUnit'
+
+    Cubux.Team.Deletions:
+      type: object
+      properties:
+        material_source:
+          $ref: '#/components/schemas/UuidKeysList'
+        measure_unit:
+          $ref: '#/components/schemas/UuidKeysList'
+
+    Cubux.Team.Snapshot:
+      allOf:
+        - $ref: '#/components/schemas/Sync.Data'
+        - type: object
+          properties:
+            objects:
+              $ref: '#/components/schemas/Cubux.Team.Objects'
+
+    Cubux.Team.Diff:
+      allOf:
+        - $ref: '#/components/schemas/Sync.DataDiff'
+        - $ref: '#/components/schemas/Cubux.Team.Snapshot'
+        - type: object
+          properties:
+            deleted_objects:
+              $ref: '#/components/schemas/Cubux.Team.Deletions'
+
+  responses:
+    202:
+      description: A task enqueued, ticked created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Sync.ResponseTicketCreated'
+
+    204:
+      description: There are no new changes since specified base revision.
+
+    304:
+      description:
+        Client did use HTTP cache in the request and the cache is actual.
+
+    401:
+      description: Access token is missing or invalid
+
+    410-diff:
+      description:
+        Specified base revision is too old. Client must to request a snapshot
+        instead.
+
+    410-ticket:
+      description: Ticket outdated
