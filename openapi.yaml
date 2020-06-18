@@ -20,6 +20,7 @@ paths:
     get:
       parameters:
         - $ref: '#/components/parameters/teamUuid_path'
+      operationId: teamSnapshot
       tags:
         - team
       security:
@@ -47,12 +48,38 @@ paths:
           description: Access denied to underlying team
         '404':
           description: Team not found
+    post:
+      parameters:
+        - $ref: '#/components/parameters/teamUuid_path'
+      operationId: teamUpdate
+      tags:
+        - team
+      security:
+        - bearerAuth: []
+      summary: Team data update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cubux.Team.Patch'
+      responses:
+        '202':
+          $ref: '#/components/responses/202'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          description: Access denied to underlying team
+        '404':
+          description: Team not found
+        '422':
+          $ref: '#/components/responses/422-patch'
 
   /team/{teamUuid}/since/{revisionUuid}:
     get:
       parameters:
         - $ref: '#/components/parameters/teamUuid_path'
         - $ref: '#/components/parameters/revisionUuid_path'
+      operationId: teamDiff
       tags:
         - team
       security:
@@ -82,7 +109,7 @@ paths:
         '403':
           description: Access denied to underlying team
         '404':
-          description: Team not found
+          description: Team or base revision was not found
         '410':
           $ref: '#/components/responses/410-diff'
 
@@ -91,6 +118,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/teamUuid_path'
         - $ref: '#/components/parameters/ticketUuid_path'
+      operationId: teamTicket
       tags:
         - team
       security:
@@ -111,14 +139,12 @@ paths:
                           - $ref: '#/components/schemas/Cubux.Team.Snapshot'
                           - $ref: '#/components/schemas/Cubux.Team.Diff'
                           - $ref: '#/components/schemas/null'
-        '304':
-          $ref: '#/components/responses/304'
         '401':
           $ref: '#/components/responses/401'
         '403':
           description: Access denied to underlying team
         '404':
-          description: Team not found
+          description: Team or ticket was not found
         '410':
           $ref: '#/components/responses/410-ticket'
 
@@ -160,6 +186,23 @@ components:
       nullable: true
       default: null
       example: null
+
+    ValidationError:
+      type: object
+      properties:
+        field:
+          type: string
+          description: Field name in the request body
+        message:
+          type: string
+          description: Error message
+      required:
+        - message
+
+    ValidationErrors:
+      type: array
+      items:
+        $ref: '#/components/schemas/ValidationError'
 
     Sync.ErrorMessage:
       type: object
@@ -263,6 +306,39 @@ components:
               format: uuid
             deleted_objects:
               type: object
+
+    Sync.DataPatch:
+      type: object
+      properties:
+        objects:
+          type: object
+          nullable: true
+          description:
+            Dictionary with created and updated objects. An empty entity
+            properties (t.i. top level properties related to a kind of an
+            object) may be omitted.
+        deleted_objects:
+          type: object
+          nullable: true
+          description:
+            Dictionary with objects deletion info. An empty entity
+            properties (t.i. top level properties related to a kind of an
+            object) may be omitted.
+        serial:
+          type: integer
+          format: int64
+          nullable: true
+          default: null
+          description:
+            Optional number for developer's purpose. This value will fill the
+            `client_serial` field in corresponding ticket. A good usage example
+            is to provide client build number to be able to identify the client
+            version (this may help to link known and new bugs with client
+            version with help of our Control Panel).
+      description:
+        At least one of `objects` and `deleted_objects` must be non-empty
+        object. Another at the same time can be either `null`, an empty object
+        or omitted.
 
     Sync.ResponseTicketCreated:
       type: object
@@ -389,13 +465,19 @@ components:
           items:
             $ref: '#/components/schemas/Cubux.MeasureUnit'
 
-    Cubux.Team.Deletions:
+    Cubux.Team.DeletionsPatch:
       type: object
       properties:
         material_source:
           $ref: '#/components/schemas/UuidKeysList'
         measure_unit:
           $ref: '#/components/schemas/UuidKeysList'
+
+    Cubux.Team.Deletions:
+      allOf:
+        - $ref: '#/components/schemas/Cubux.Team.DeletionsPatch'
+        - type: object
+          properties: {}
 
     Cubux.Team.Snapshot:
       allOf:
@@ -413,6 +495,16 @@ components:
           properties:
             deleted_objects:
               $ref: '#/components/schemas/Cubux.Team.Deletions'
+
+    Cubux.Team.Patch:
+      allOf:
+        - $ref: '#/components/schemas/Sync.DataPatch'
+        - type: object
+          properties:
+            objects:
+              $ref: '#/components/schemas/Cubux.Team.Objects'
+            deleted_objects:
+              $ref: '#/components/schemas/Cubux.Team.DeletionsPatch'
 
   responses:
     202:
@@ -439,3 +531,12 @@ components:
 
     410-ticket:
       description: Ticket outdated
+
+    422-patch:
+      description:
+        Input data in the request has invalid basic structure. All error
+        messages in this response are related to client developer only.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ValidationErrors'
