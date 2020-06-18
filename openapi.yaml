@@ -262,7 +262,6 @@ components:
           format: date-time
         errors:
           type: array
-          nullable: true
           items:
             $ref: '#/components/schemas/Sync.ObjectErrors'
         client_id:
