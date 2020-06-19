@@ -359,9 +359,10 @@ components:
             - $ref: '#/components/schemas/null'
           description:
             Type depends of the ticket `status` and original request, which did
-            produce the ticket. When ticket `status` is `"done"`, `data` will
-            contain data, which was originally requested. Otherwise `data` will
-            be `null`.
+            produce the ticket. Is case of Patch request `data` will always be
+            `null`. When ticket `status` is `"done"`, `data` will contain data,
+            which was originally requested for Snapshot or Diff requests.
+            Otherwise `data` will be `null`.
 
     Sync.ResponseData:
       type: object
@@ -401,6 +402,7 @@ components:
           type: string
           minLength: 1
           maxLength: 128
+          example: Milk
         is_hidden:
           type: boolean
           default: false
@@ -420,6 +422,7 @@ components:
           type: string
           minLength: 1
           maxLength: 32
+          example: g
         source_uuid:
           type: string
           format: uuid
@@ -442,6 +445,7 @@ components:
           maximum: 9e9
           nullable: true
           default: null
+          example: 2.5
           description:
             Quantity of base unit when `eq_unit_uuid` assigned.
         is_hidden:
@@ -451,6 +455,73 @@ components:
         - name
       description:
         Measure unit.
+
+    Cubux.Specification:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 1
+          maxLength: 128
+          example: Cookies XYZ
+        sort:
+          type: integer
+          minimum: 0
+          maximum: 65535
+          default: 0
+        is_hidden:
+          type: boolean
+          default: false
+      required:
+        - name
+      description:
+        A receipt describing ingredients to create specific product out of
+        source materials.
+
+    Cubux.SpecificationIngredient:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        specification_uuid:
+          type: string
+          format: uuid
+          description:
+            Specification `Cubux.Specification` to which this belongs to.
+            Can only be assigned to new object and cannot be changed later.
+        source_uuid:
+          type: string
+          format: uuid
+          description:
+            Which source material `Cubux.MaterialSource` it describes.
+        unit_uuid:
+          type: string
+          format: uuid
+          description:
+            Which measure unit `Cubux.MeasureUnit` use. Measure unit either
+            must not be linked to any source material or must be linked to same
+            source material as this ingredient itself.
+        quantity:
+          type: number
+          minimum: 1e-10
+          maximum: 9e9
+          example: 350
+        sort:
+          type: integer
+          minimum: 0
+          maximum: 65535
+          default: 0
+      required:
+        - specification_uuid
+        - source_uuid
+        - unit_uuid
+        - quantity
+      description:
+        An ingredient describing quantity of one specific material to consume.
 
     Cubux.Team.Objects:
       type: object
@@ -463,6 +534,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.MeasureUnit'
+        specification:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.Specification'
+        specification_ingredient:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.SpecificationIngredient'
 
     Cubux.Team.DeletionsPatch:
       type: object
@@ -470,6 +549,10 @@ components:
         material_source:
           $ref: '#/components/schemas/UuidKeysList'
         measure_unit:
+          $ref: '#/components/schemas/UuidKeysList'
+        specification:
+          $ref: '#/components/schemas/UuidKeysList'
+        specification_ingredient:
           $ref: '#/components/schemas/UuidKeysList'
 
     Cubux.Team.Deletions:
