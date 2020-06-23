@@ -458,6 +458,42 @@ components:
       description:
         Measure unit.
 
+    Cubux.SelfAccount:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: Foo bar
+        sort:
+          type: integer
+          minimum: 0
+          maximum: 65535
+          default: 0
+        is_hidden:
+          type: boolean
+          default: false
+      required:
+        - name
+
+    Cubux.SelfProject:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: Lorem ipsum
+      required:
+        - name
+
     Cubux.Specification:
       type: object
       properties:
@@ -528,6 +564,10 @@ components:
     Cubux.Team.Objects:
       type: object
       properties:
+        account:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.SelfAccount'
         material_source:
           type: array
           items:
@@ -536,6 +576,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.MeasureUnit'
+        project:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.SelfProject'
         specification:
           type: array
           items:
@@ -548,9 +592,13 @@ components:
     Cubux.Team.DeletionsPatch:
       type: object
       properties:
+        account:
+          $ref: '#/components/schemas/UuidKeysList'
         material_source:
           $ref: '#/components/schemas/UuidKeysList'
         measure_unit:
+          $ref: '#/components/schemas/UuidKeysList'
+        project:
           $ref: '#/components/schemas/UuidKeysList'
         specification:
           $ref: '#/components/schemas/UuidKeysList'
