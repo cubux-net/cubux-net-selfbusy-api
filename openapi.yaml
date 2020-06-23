@@ -394,6 +394,35 @@ components:
         - 3fa85f64-5717-4562-b3fc-2c963f66afa6
         - 26854f64-7427-4389-b273-839438462854
 
+    Cubux.Customer:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: John Random
+        phone:
+          type: string
+          maxLength: 64
+          example: +7 000 123-45-56
+        email:
+          type: string
+          format: email
+          maxLength: 128
+          example: john.random@example.org
+        address:
+          type: string
+          maxLength: 1000
+        is_hidden:
+          type: boolean
+          default: false
+      required:
+        - name
+
     Cubux.MaterialSource:
       type: object
       properties:
@@ -568,6 +597,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.SelfAccount'
+        customer:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.Customer'
         material_source:
           type: array
           items:
@@ -593,6 +626,8 @@ components:
       type: object
       properties:
         account:
+          $ref: '#/components/schemas/UuidKeysList'
+        customer:
           $ref: '#/components/schemas/UuidKeysList'
         material_source:
           $ref: '#/components/schemas/UuidKeysList'

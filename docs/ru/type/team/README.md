@@ -4,6 +4,7 @@
 Содержание
 ----------
 
+*   [`Cubux.Customer`](customer.md)
 *   [`Cubux.MaterialSource`](material-source.md)
 *   [`Cubux.MeasureUnit`](measure-unit.md)
 *   [`Cubux.SelfAccount`](account.md)
