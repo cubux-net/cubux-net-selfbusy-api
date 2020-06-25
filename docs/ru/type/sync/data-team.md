@@ -14,6 +14,7 @@
 Поле | Тип | Описание
 ---- | --- | --------
 `account` | `Array:`[`Cubux.SelfAccount`][Cubux.SelfAccount] | Справочник счетов
+`category` | `Array:`[`Cubux.SelfCategory`][Cubux.SelfCategory] | Справочник категорий
 `customer` | `Array:`[`Cubux.Customer`][Cubux.Customer] | Справочник заказчиков
 `material_source` | `Array:`[`Cubux.MaterialSource`][Cubux.MaterialSource] | Справочник материалов (неисчисляемые ресурсы, как таковые)
 `measure_unit` | `Array:`[`Cubux.MeasureUnit`][Cubux.MeasureUnit] | Единицы измерения
@@ -26,6 +27,7 @@
 [Cubux.MaterialSource]: ../team/material-source.md
 [Cubux.MeasureUnit]: ../team/measure-unit.md
 [Cubux.SelfAccount]: ../team/account.md
+[Cubux.SelfCategory]: ../team/category.md
 [Cubux.SelfProject]: ../team/project.md
 [Cubux.Specification]: ../team/specification.md
 [Cubux.SpecificationIngredient]: ../team/specification-ingredient.md

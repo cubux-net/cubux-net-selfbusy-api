@@ -509,6 +509,55 @@ components:
       required:
         - name
 
+    Cubux.SelfCategory:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/Cubux.TurnoverType'
+          #allOf:
+          #  - $ref: '#/components/schemas/Cubux.TurnoverType',
+          #  - {}
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: Lorem ipsum
+        specification_uuid:
+          type: string
+          format: uuid
+          nullable: true
+          default: null
+          example: null
+          description:
+            Linked specification `Cubux.Specification`. Can only be used and is
+            required when `type` is `"income"` and `is_service` is `false`.
+        cost:
+          type: number
+          minimum: 0
+          description:
+            Default cost value to use whe create a transaction with this
+            category. Applies only when `type` is `"income"`.
+        is_service:
+          type: boolean
+          default: false
+          description:
+            Whether it describes a good or a service. Applies only when `type`
+            is `"income"`.
+        sort:
+          type: integer
+          minimum: 0
+          maximum: 65535
+          default: 0
+        is_hidden:
+          type: boolean
+          default: false
+      required:
+        - type
+        - name
+
     Cubux.SelfProject:
       type: object
       properties:
@@ -590,6 +639,12 @@ components:
       description:
         An ingredient describing quantity of one specific material to consume.
 
+    Cubux.TurnoverType:
+      type: string
+      enum:
+        - income
+        - expense
+
     Cubux.Team.Objects:
       type: object
       properties:
@@ -597,6 +652,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.SelfAccount'
+        category:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.SelfCategory'
         customer:
           type: array
           items:
@@ -626,6 +685,8 @@ components:
       type: object
       properties:
         account:
+          $ref: '#/components/schemas/UuidKeysList'
+        category:
           $ref: '#/components/schemas/UuidKeysList'
         customer:
           $ref: '#/components/schemas/UuidKeysList'
