@@ -5,9 +5,13 @@
 ----------
 
 *   [`Cubux.Customer`](customer.md)
+*   [`Cubux.Document`](document.md)
+*   [`Cubux.MaterialOperation`](material-operation.md)
 *   [`Cubux.MaterialSource`](material-source.md)
 *   [`Cubux.MeasureUnit`](measure-unit.md)
+*   [`Cubux.OperationSide`](operation-side.md)
 *   [`Cubux.SelfAccount`](account.md)
+*   [`Cubux.SelfAccountOperation`](account-operation.md)
 *   [`Cubux.SelfCategory`](category.md)
 *   [`Cubux.SelfCategoryLink`](category-link.md)
 *   [`Cubux.SelfProject`](project.md)

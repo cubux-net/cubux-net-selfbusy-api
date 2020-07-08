@@ -14,9 +14,12 @@
 Поле | Тип | Описание
 ---- | --- | --------
 `account` | `Array:`[`Cubux.SelfAccount`][Cubux.SelfAccount] | Справочник счетов
+`account_operation` | `Array:`[`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | Операции по счетам
 `category` | `Array:`[`Cubux.SelfCategory`][Cubux.SelfCategory] | Справочник категорий
 `category_link` | `Array:`[`Cubux.SelfCategoryLink`][Cubux.SelfCategoryLink] | Связи между категориями
 `customer` | `Array:`[`Cubux.Customer`][Cubux.Customer] | Справочник заказчиков
+`document` | `Array:`[`Cubux.Document`][Cubux.Document] | Документы
+`material_operation` | `Array:`[`Cubux.MaterialOperation`][Cubux.MaterialOperation] | Операции по материалам на складе
 `material_source` | `Array:`[`Cubux.MaterialSource`][Cubux.MaterialSource] | Справочник материалов (неисчисляемые ресурсы, как таковые)
 `measure_unit` | `Array:`[`Cubux.MeasureUnit`][Cubux.MeasureUnit] | Единицы измерения
 `project` | `Array:`[`Cubux.SelfProject`][Cubux.SelfProject] | Справочник проектов
@@ -25,9 +28,12 @@
 
 
 [Cubux.Customer]: ../team/customer.md
+[Cubux.Document]: ../team/document.md
+[Cubux.MaterialOperation]: ../team/material-operation.md
 [Cubux.MaterialSource]: ../team/material-source.md
 [Cubux.MeasureUnit]: ../team/measure-unit.md
 [Cubux.SelfAccount]: ../team/account.md
+[Cubux.SelfAccountOperation]: ../team/account-operation.md
 [Cubux.SelfCategory]: ../team/category.md
 [Cubux.SelfCategoryLink]: ../team/category-link.md
 [Cubux.SelfProject]: ../team/project.md

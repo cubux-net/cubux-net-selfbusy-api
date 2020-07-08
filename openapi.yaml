@@ -394,6 +394,15 @@ components:
         - 3fa85f64-5717-4562-b3fc-2c963f66afa6
         - 26854f64-7427-4389-b273-839438462854
 
+    Cubux.OperationSide:
+      type: integer
+      enum:
+        - 0
+        - 1
+      description: >
+        `0` - "in" - increase underlying amount/quantity; `1` - "out" -
+        decrease underlying amount/quantity.
+
     Cubux.Customer:
       type: object
       properties:
@@ -422,6 +431,65 @@ components:
           default: false
       required:
         - name
+
+    Cubux.Document:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        type:
+          type: string
+          enum:
+            #- fabricate_to_store
+            #- general_expense
+            #- general_income
+            - material_buy
+            #- material_dispose
+            #- material_remove
+            #- order_add_stored_product
+            #- order_create
+            #- order_dispose_product
+            #- order_income
+            #- order_product_close
+            #- order_product_to_store
+            #- order_service_add
+            #- order_service_close
+            #- stored_product_dispose
+            #- stored_product_sell
+        datetime:
+          type: string
+          format: 'date-time'
+      required:
+        - uuid
+        - type
+
+    Cubux.MaterialOperation:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        doc_uuid:
+          type: string
+          format: uuid
+        side:
+          $ref: '#/components/schemas/Cubux.OperationSide'
+        material_uuid:
+          type: string
+          format: uuid
+        unit_uuid:
+          type: string
+          format: uuid
+        quantity:
+          type: number
+          minimum: 1e-10
+      required:
+        - doc_uuid
+        - side
+        - material_uuid
+        - unit_uuid
+        - quantity
 
     Cubux.MaterialSource:
       type: object
@@ -508,6 +576,29 @@ components:
           default: false
       required:
         - name
+
+    Cubux.SelfAccountOperation:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        doc_uuid:
+          type: string
+          format: uuid
+        side:
+          $ref: '#/components/schemas/Cubux.OperationSide'
+        account_uuid:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          minimum: 0.01
+      required:
+        - doc_uuid
+        - side
+        - account_uuid
+        - amount
 
     Cubux.SelfCategory:
       type: object
@@ -676,6 +767,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.SelfAccount'
+        account_operation:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.SelfAccountOperation'
         category:
           type: array
           items:
@@ -688,6 +783,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.Customer'
+        document:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.Document'
+        material_operation:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.MaterialOperation'
         material_source:
           type: array
           items:
@@ -714,6 +817,8 @@ components:
       properties:
         account:
           $ref: '#/components/schemas/UuidKeysList'
+        account_operation:
+          $ref: '#/components/schemas/UuidKeysList'
         category:
           $ref: '#/components/schemas/UuidKeysList'
         category_link:
@@ -721,6 +826,10 @@ components:
           items:
             $ref: '#/components/schemas/Cubux.SelfCategoryLinkKey'
         customer:
+          $ref: '#/components/schemas/UuidKeysList'
+        document:
+          $ref: '#/components/schemas/UuidKeysList'
+        material_operation:
           $ref: '#/components/schemas/UuidKeysList'
         material_source:
           $ref: '#/components/schemas/UuidKeysList'

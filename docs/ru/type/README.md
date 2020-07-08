@@ -9,9 +9,13 @@
 *   [Данные команды](team/README.md)
 *   Все по алфавиту
     *   [`Cubux.Customer`](team/customer.md)
+    *   [`Cubux.Document`](team/document.md)
+    *   [`Cubux.MaterialOperation`](team/material-operation.md)
     *   [`Cubux.MaterialSource`](team/material-source.md)
     *   [`Cubux.MeasureUnit`](team/measure-unit.md)
+    *   [`Cubux.OperationSide`](team/operation-side.md)
     *   [`Cubux.SelfAccount`](team/account.md)
+    *   [`Cubux.SelfAccountOperation`](team/account-operation.md)
     *   [`Cubux.SelfCategory`](team/category.md)
     *   [`Cubux.SelfCategoryLink`](team/category-link.md)
     *   [`Cubux.SelfProject`](team/project.md)
