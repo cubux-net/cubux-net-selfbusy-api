@@ -445,7 +445,7 @@ components:
             #- general_expense
             #- general_income
             - material_buy
-            #- material_dispose
+            - material_dispose
             #- material_remove
             #- order_add_stored_product
             #- order_create

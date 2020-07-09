@@ -35,6 +35,14 @@
 [`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `0` - in | 1 | Добавление материала на склад
 [`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `1` - out | 1 | Списание средств со счёта
 
+#### `material_dispose`
+
+Списание материала со склада. Является убытком. Не путать с отменой покупки.
+
+Операция | Направление | Кол-во | Описание
+-------- | ----------- | ------ | --------
+[`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `1` - out | 1 | Списание материала со склада
+
 
 [Cubux.MaterialOperation]: ./material-operation.md
 [Cubux.OperationSide]: ./operation-side.md
