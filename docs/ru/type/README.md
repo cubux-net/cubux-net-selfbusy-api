@@ -18,6 +18,7 @@
     *   [`Cubux.SelfAccountOperation`](team/account-operation.md)
     *   [`Cubux.SelfCategory`](team/category.md)
     *   [`Cubux.SelfCategoryLink`](team/category-link.md)
+    *   [`Cubux.SelfCategoryOperation`](team/category-operation.md)
     *   [`Cubux.SelfProject`](team/project.md)
     *   [`Cubux.Specification`](team/specification.md)
     *   [`Cubux.SpecificationIngredient`](team/specification-ingredient.md)

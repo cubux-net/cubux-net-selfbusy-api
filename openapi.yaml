@@ -442,7 +442,7 @@ components:
           type: string
           enum:
             #- fabricate_to_store
-            #- general_expense
+            - general_expense
             #- general_income
             - material_buy
             - material_dispose
@@ -673,6 +673,25 @@ components:
         - description:
             A link between specific income and expense categories.
 
+    Cubux.SelfCategoryOperation:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        doc_uuid:
+          type: string
+          format: uuid
+        side:
+          $ref: '#/components/schemas/Cubux.OperationSide'
+        category_uuid:
+          type: string
+          format: uuid
+      required:
+        - doc_uuid
+        - side
+        - category_uuid
+
     Cubux.SelfProject:
       type: object
       properties:
@@ -779,6 +798,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.SelfCategoryLink'
+        category_operation:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.SelfCategoryOperation'
         customer:
           type: array
           items:
@@ -825,6 +848,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.SelfCategoryLinkKey'
+        category_operation:
+          $ref: '#/components/schemas/UuidKeysList'
         customer:
           $ref: '#/components/schemas/UuidKeysList'
         document:
