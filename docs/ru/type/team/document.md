@@ -35,6 +35,9 @@
 [`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `1` - out | 1..n | Расход материалов со склада
 [`Cubux.SelfCategoryOperation`][Cubux.SelfCategoryOperation] | `0` - in | 1 | Категория доходов (тип `income`)
 
+> TODO: возможно, имеет смысл заменить категорию на иную сущность и указать
+> кол-во произведенного продукта.
+
 #### `general_expense` (1)
 
 Прочие расходы, кроме заказов и покупки материалов на склад.
@@ -61,6 +64,17 @@
 Операция | Направление | Кол-во | Описание
 -------- | ----------- | ------ | --------
 [`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `1` - out | 1 | Списание материала со склада
+
+#### `stored_product_dispose` (13)
+
+Списание готового продукта со склада готовой продукции
+
+Операция | Направление | Кол-во | Описание
+-------- | ----------- | ------ | --------
+[`Cubux.SelfCategoryOperation`][Cubux.SelfCategoryOperation] | `1` - out | 1 | Категория доходов (тип `income`)
+
+> TODO: возможно, имеет смысл заменить категорию на иную сущность и указать
+> кол-во списанного продукта.
 
 
 [Cubux.MaterialOperation]: ./material-operation.md
