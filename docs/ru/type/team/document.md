@@ -23,9 +23,19 @@
 ### Типы операций `type`
 
 Ниже в подзаголовках перечислены возможные значения для поля `type` вместе с
-описанием необходимых операций.
+описанием необходимых операций. В скобках после имени типа указан внутренний
+номер транзакции.
 
-#### `general_expense`
+#### `fabricate_to_store` (8)
+
+Изготовление продукции вне заказа на склад готовой продукции.
+
+Операция | Направление | Кол-во | Описание
+-------- | ----------- | ------ | --------
+[`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `1` - out | 1..n | Расход материалов со склада
+[`Cubux.SelfCategoryOperation`][Cubux.SelfCategoryOperation] | `0` - in | 1 | Категория доходов (тип `income`)
+
+#### `general_expense` (1)
 
 Прочие расходы, кроме заказов и покупки материалов на склад.
 
@@ -34,7 +44,7 @@
 [`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `1` - out | 1 | Списание средств со счёта
 [`Cubux.SelfCategoryOperation`][Cubux.SelfCategoryOperation] | `0` - in | 1 | Категория расходов (тип `expense`)
 
-#### `material_buy`
+#### `material_buy` (2)
 
 Приобретение одного материала на склад посредством списания средств с одного
 счета.
@@ -44,7 +54,7 @@
 [`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `0` - in | 1 | Добавление материала на склад
 [`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `1` - out | 1 | Списание средств со счёта
 
-#### `material_dispose`
+#### `material_dispose` (14)
 
 Списание материала со склада. Является убытком. Не путать с отменой покупки.
 

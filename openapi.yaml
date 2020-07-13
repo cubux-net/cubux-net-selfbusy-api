@@ -441,7 +441,7 @@ components:
         type:
           type: string
           enum:
-            #- fabricate_to_store
+            - fabricate_to_store
             - general_expense
             #- general_income
             - material_buy
