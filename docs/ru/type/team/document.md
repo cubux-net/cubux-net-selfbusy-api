@@ -32,7 +32,7 @@
 Операция | Направление | Кол-во | Описание
 -------- | ----------- | ------ | --------
 [`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `1` - out | 1 | Списание средств со счёта
-[`Cubux.SelfCategoryOperation`][Cubux.SelfCategoryOperation] | `0` - in | 1 | Категория расходов
+[`Cubux.SelfCategoryOperation`][Cubux.SelfCategoryOperation] | `0` - in | 1 | Категория расходов (тип `expense`)
 
 #### `material_buy`
 
@@ -56,3 +56,4 @@
 [Cubux.MaterialOperation]: ./material-operation.md
 [Cubux.OperationSide]: ./operation-side.md
 [Cubux.SelfAccountOperation]: ./account-operation.md
+[Cubux.SelfCategoryOperation]: ./category-operation.md
