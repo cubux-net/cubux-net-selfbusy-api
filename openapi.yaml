@@ -555,6 +555,32 @@ components:
       description:
         Measure unit.
 
+    Cubux.ProductOperation:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        doc_uuid:
+          type: string
+          format: uuid
+        side:
+          $ref: '#/components/schemas/Cubux.OperationSide'
+        category_uuid:
+          type: string
+          format: uuid
+          description:
+            Target category must be with `type` = `"income"`, `is_service` =
+            `false` and have `specification_uuid` defined.
+        quantity:
+          type: number
+          minimum: 1e-10
+      required:
+        - doc_uuid
+        - side
+        - category_uuid
+        - quantity
+
     Cubux.SelfAccount:
       type: object
       properties:
@@ -822,6 +848,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.MeasureUnit'
+        product_operation:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.ProductOperation'
         project:
           type: array
           items:
@@ -859,6 +889,8 @@ components:
         material_source:
           $ref: '#/components/schemas/UuidKeysList'
         measure_unit:
+          $ref: '#/components/schemas/UuidKeysList'
+        product_operation:
           $ref: '#/components/schemas/UuidKeysList'
         project:
           $ref: '#/components/schemas/UuidKeysList'

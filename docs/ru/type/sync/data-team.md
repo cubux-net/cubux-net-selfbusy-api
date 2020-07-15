@@ -23,6 +23,7 @@
 `material_operation` | `Array:`[`Cubux.MaterialOperation`][Cubux.MaterialOperation] | Операции по материалам на складе
 `material_source` | `Array:`[`Cubux.MaterialSource`][Cubux.MaterialSource] | Справочник материалов (неисчисляемые ресурсы, как таковые)
 `measure_unit` | `Array:`[`Cubux.MeasureUnit`][Cubux.MeasureUnit] | Единицы измерения
+`product_operation` | `Array:`[`Cubux.ProductOperation`][Cubux.ProductOperation] | операции по продуктам на складе
 `project` | `Array:`[`Cubux.SelfProject`][Cubux.SelfProject] | Справочник проектов
 `specification` | `Array:`[`Cubux.Specification`][Cubux.Specification] | Техкарты
 `specification_ingredient` | `Array:`[`Cubux.SpecificationIngredient`][Cubux.SpecificationIngredient] | Ингредиенты техкарт
@@ -33,6 +34,7 @@
 [Cubux.MaterialOperation]: ../team/material-operation.md
 [Cubux.MaterialSource]: ../team/material-source.md
 [Cubux.MeasureUnit]: ../team/measure-unit.md
+[Cubux.ProductOperation]: ../team/product-operation.md
 [Cubux.SelfAccount]: ../team/account.md
 [Cubux.SelfAccountOperation]: ../team/account-operation.md
 [Cubux.SelfCategory]: ../team/category.md

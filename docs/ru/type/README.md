@@ -14,6 +14,7 @@
     *   [`Cubux.MaterialSource`](team/material-source.md)
     *   [`Cubux.MeasureUnit`](team/measure-unit.md)
     *   [`Cubux.OperationSide`](team/operation-side.md)
+    *   [`Cubux.ProductOperation`](team/product-operation.md)
     *   [`Cubux.SelfAccount`](team/account.md)
     *   [`Cubux.SelfAccountOperation`](team/account-operation.md)
     *   [`Cubux.SelfCategory`](team/category.md)
