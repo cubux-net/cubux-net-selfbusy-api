@@ -456,7 +456,7 @@ components:
             #- order_service_add
             #- order_service_close
             - stored_product_dispose
-            #- stored_product_sell
+            - stored_product_sell
         datetime:
           type: string
           format: 'date-time'

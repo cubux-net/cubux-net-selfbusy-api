@@ -70,6 +70,15 @@
 -------- | ----------- | ------ | --------
 [`Cubux.ProductOperation`][Cubux.ProductOperation] | `1` - out | 1 | Списание продукта со склада
 
+#### `stored_product_sell` (9)
+
+Продажа продукта вне заказа со склада готовой продукции.
+
+Операция | Направление | Кол-во | Описание
+-------- | ----------- | ------ | --------
+[`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `0` - in | 1 | Поступление средств на счёт
+[`Cubux.ProductOperation`][Cubux.ProductOperation] | `1` - out | 1 | Списание продукта со склада
+
 
 [Cubux.MaterialOperation]: ./material-operation.md
 [Cubux.OperationSide]: ./operation-side.md
