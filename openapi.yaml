@@ -426,6 +426,9 @@ components:
         address:
           type: string
           maxLength: 1000
+        comment:
+          type: string
+          maxLength: 1000
         is_hidden:
           type: boolean
           default: false
