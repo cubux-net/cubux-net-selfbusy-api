@@ -10,6 +10,7 @@
 *   [`Cubux.MaterialSource`](material-source.md)
 *   [`Cubux.MeasureUnit`](measure-unit.md)
 *   [`Cubux.OperationSide`](operation-side.md)
+*   [`Cubux.Order`](order.md)
 *   [`Cubux.ProductOperation`](product-operation.md)
 *   [`Cubux.SelfAccount`](account.md)
 *   [`Cubux.SelfAccountOperation`](account-operation.md)

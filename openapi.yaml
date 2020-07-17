@@ -558,6 +558,32 @@ components:
       description:
         Measure unit.
 
+    Cubux.Order:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        customer_uuid:
+          type: string
+          format: uuid
+        title:
+          type: string
+          minLength: 1
+          maxLength: 128
+          example: 'Order #42'
+        project_uuid:
+          type: string
+          format: uuid
+          nullable: true
+          default: null
+        created_at:
+          type: string
+          format: 'date-time'
+      required:
+        - customer_uuid
+        - title
+
     Cubux.ProductOperation:
       type: object
       properties:
@@ -851,6 +877,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.MeasureUnit'
+        order:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.Order'
         product_operation:
           type: array
           items:
@@ -892,6 +922,8 @@ components:
         material_source:
           $ref: '#/components/schemas/UuidKeysList'
         measure_unit:
+          $ref: '#/components/schemas/UuidKeysList'
+        order:
           $ref: '#/components/schemas/UuidKeysList'
         product_operation:
           $ref: '#/components/schemas/UuidKeysList'
