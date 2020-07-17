@@ -564,14 +564,16 @@ components:
         uuid:
           type: string
           format: uuid
-        customer_uuid:
-          type: string
-          format: uuid
         title:
           type: string
           minLength: 1
           maxLength: 128
           example: 'Order #42'
+        customer_uuid:
+          type: string
+          format: uuid
+          nullable: true
+          default: null
         project_uuid:
           type: string
           format: uuid
@@ -581,7 +583,6 @@ components:
           type: string
           format: 'date-time'
       required:
-        - customer_uuid
         - title
 
     Cubux.ProductOperation:
