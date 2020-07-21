@@ -585,6 +585,35 @@ components:
       required:
         - title
 
+    Cubux.OrderPosition:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        order_uuid:
+          type: string
+          format: uuid
+        category_uuid:
+          type: string
+          format: uuid
+        price:
+          type: number
+          minimum: 0.01
+        quantity:
+          type: number
+          minimum: 1e-10
+        sort:
+          type: integer
+          minimum: 0
+          maximum: 65535
+          default: 0
+      required:
+        - order_uuid
+        - category_uuid
+        - price
+        - quantity
+
     Cubux.ProductOperation:
       type: object
       properties:
@@ -882,6 +911,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.Order'
+        order_position:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.OrderPosition'
         product_operation:
           type: array
           items:
@@ -925,6 +958,8 @@ components:
         measure_unit:
           $ref: '#/components/schemas/UuidKeysList'
         order:
+          $ref: '#/components/schemas/UuidKeysList'
+        order_position:
           $ref: '#/components/schemas/UuidKeysList'
         product_operation:
           $ref: '#/components/schemas/UuidKeysList'

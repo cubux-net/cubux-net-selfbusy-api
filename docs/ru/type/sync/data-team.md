@@ -24,6 +24,7 @@
 `material_source` | `Array:`[`Cubux.MaterialSource`][Cubux.MaterialSource] | Справочник материалов (неисчисляемые ресурсы, как таковые)
 `measure_unit` | `Array:`[`Cubux.MeasureUnit`][Cubux.MeasureUnit] | Единицы измерения
 `order` | `Array:`[`Cubux.Order`][Cubux.Order] | Заказы
+`order_position` | `Array:`[`Cubux.OrderPosition`][Cubux.OrderPosition] | Позиции заказов
 `product_operation` | `Array:`[`Cubux.ProductOperation`][Cubux.ProductOperation] | операции по продуктам на складе
 `project` | `Array:`[`Cubux.SelfProject`][Cubux.SelfProject] | Справочник проектов
 `specification` | `Array:`[`Cubux.Specification`][Cubux.Specification] | Техкарты
@@ -36,6 +37,7 @@
 [Cubux.MaterialSource]: ../team/material-source.md
 [Cubux.MeasureUnit]: ../team/measure-unit.md
 [Cubux.Order]: ../team/order.md
+[Cubux.OrderPosition]: ../team/order-position.md
 [Cubux.ProductOperation]: ../team/product-operation.md
 [Cubux.SelfAccount]: ../team/account.md
 [Cubux.SelfAccountOperation]: ../team/account-operation.md
