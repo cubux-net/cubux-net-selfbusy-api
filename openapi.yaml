@@ -450,13 +450,13 @@ components:
             - material_buy
             - material_dispose
             #- material_remove
+            - order_add_service
             - order_add_stored_product
             #- order_create
             #- order_dispose_product
             #- order_income
             #- order_product_close
             #- order_product_to_store
-            #- order_service_add
             #- order_service_close
             - stored_product_dispose
             - stored_product_sell

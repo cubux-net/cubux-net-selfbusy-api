@@ -62,6 +62,15 @@
 -------- | ----------- | ------ | --------
 [`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `1` - out | 1 | Списание материала со склада
 
+#### `order_add_service` (7)
+
+Включение в заказ услуги.
+
+Операция | Направление | Кол-во | Описание
+-------- | ----------- | ------ | --------
+[`Cubux.OrderProductOperation`][Cubux.OrderProductOperation] | `0` - in | 1 | Добавление услуги в заказ
+[`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `1` - out | 1 | Списание средств со счёта
+
 #### `order_add_stored_product` (10)
 
 Включение в заказ готовой продукции.
