@@ -62,6 +62,15 @@
 -------- | ----------- | ------ | --------
 [`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `1` - out | 1 | Списание материала со склада
 
+#### `order_add_stored_product` (10)
+
+Включение в заказ готовой продукции.
+
+Операция | Направление | Кол-во | Описание
+-------- | ----------- | ------ | --------
+[`Cubux.OrderProductOperation`][Cubux.OrderProductOperation] | `0` - in | 1 | Добавление продукта в заказ
+[`Cubux.ProductOperation`][Cubux.ProductOperation] | `1` - out | 1 | Списание продукта со склада
+
 #### `stored_product_dispose` (13)
 
 Списание готового продукта со склада готовой продукции
@@ -82,6 +91,7 @@
 
 [Cubux.MaterialOperation]: ./material-operation.md
 [Cubux.OperationSide]: ./operation-side.md
+[Cubux.OrderProductOperation]: ./order-product-operation.md
 [Cubux.ProductOperation]: ./product-operation.md
 [Cubux.SelfAccountOperation]: ./account-operation.md
 [Cubux.SelfCategoryOperation]: ./category-operation.md

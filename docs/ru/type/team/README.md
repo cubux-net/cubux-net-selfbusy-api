@@ -12,6 +12,7 @@
 *   [`Cubux.OperationSide`](operation-side.md)
 *   [`Cubux.Order`](order.md)
 *   [`Cubux.OrderPosition`](order-position.md)
+*   [`Cubux.OrderProductOperation`](order-product-operation.md)
 *   [`Cubux.ProductOperation`](product-operation.md)
 *   [`Cubux.SelfAccount`](account.md)
 *   [`Cubux.SelfAccountOperation`](account-operation.md)
