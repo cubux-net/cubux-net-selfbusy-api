@@ -1,8 +1,8 @@
-Тип `Cubux.OrderProductOperation`
+Тип `Cubux.OrderPayOperation`
 =================================
 
-Часть документа [`Cubux.Document`][Cubux.Document], отвечающая за продукт или
-услугу в заказе (бухгалтерский счёт 20).
+Часть документа [`Cubux.Document`][Cubux.Document], отвечающая за расчёт по
+заказам (бухгалтерский счёт 62).
 
 Объект со следующими полями:
 
@@ -12,13 +12,10 @@
 `doc_uuid` | `uuid` | Обязательно. UUID документа, к которому относится.
 `side` | [`Cubux.OperationSide`][Cubux.OperationSide] | Обязательно. Направление операции.
 `order_uuid` | `uuid` | Обязательно. UUID заказа [`Cubux.Order`][Cubux.Order].
-`category_uuid` | `uuid` | Обязательно. UUID категории [`Cubux.SelfCategory`][Cubux.SelfCategory].
-`quantity` | `float` | Обязательно. Количество. Минимум `1e-10`.
+`amount` | `float` | Обязательно. Сумма. Минимум `0.01`.
 
 **Важно**: Объекты данного типа должны обрабатываться только вместе с
 соответствующим документом. Прямое изменение и удаление невозможно.
-
-**Важно**: Категория должна доходной (`type` = `"income"`).
 
 > TODO: Вероятно, придётся добавить тип операции.
 
@@ -26,4 +23,3 @@
 [Cubux.Document]: ./document.md
 [Cubux.OperationSide]: ./operation-side.md
 [Cubux.Order]: ./order.md
-[Cubux.SelfCategory]: ./category.md

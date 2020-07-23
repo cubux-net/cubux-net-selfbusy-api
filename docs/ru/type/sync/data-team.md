@@ -24,6 +24,7 @@
 `material_source` | `Array:`[`Cubux.MaterialSource`][Cubux.MaterialSource] | Справочник материалов (неисчисляемые ресурсы, как таковые)
 `measure_unit` | `Array:`[`Cubux.MeasureUnit`][Cubux.MeasureUnit] | Единицы измерения
 `order` | `Array:`[`Cubux.Order`][Cubux.Order] | Заказы
+`order_pay_operation` | `Array:`[`Cubux.OrderPayOperation`][Cubux.OrderPayOperation] | Операции по оплате в заказе
 `order_position` | `Array:`[`Cubux.OrderPosition`][Cubux.OrderPosition] | Позиции заказов
 `order_product_operation` | `Array:`[`Cubux.OrderProductOperation`][Cubux.OrderProductOperation] | Операции по продуктам и услугам в заказе
 `product_operation` | `Array:`[`Cubux.ProductOperation`][Cubux.ProductOperation] | Операции по продуктам на складе
@@ -38,6 +39,7 @@
 [Cubux.MaterialSource]: ../team/material-source.md
 [Cubux.MeasureUnit]: ../team/measure-unit.md
 [Cubux.Order]: ../team/order.md
+[Cubux.OrderPayOperation]: ../team/order-pay-operation.md
 [Cubux.OrderPosition]: ../team/order-position.md
 [Cubux.OrderProductOperation]: ../team/order-product-operation.md
 [Cubux.ProductOperation]: ../team/product-operation.md

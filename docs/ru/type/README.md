@@ -15,6 +15,7 @@
     *   [`Cubux.MeasureUnit`](team/measure-unit.md)
     *   [`Cubux.OperationSide`](team/operation-side.md)
     *   [`Cubux.Order`](team/order.md)
+    *   [`Cubux.OrderPayOperation`](team/order-pay-operation.md)
     *   [`Cubux.OrderPosition`](team/order-position.md)
     *   [`Cubux.OrderProductOperation`](team/order-product-operation.md)
     *   [`Cubux.ProductOperation`](team/product-operation.md)
