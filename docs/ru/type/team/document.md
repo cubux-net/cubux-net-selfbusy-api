@@ -88,6 +88,15 @@
 -------- | ----------- | ------ | --------
 [`Cubux.ProductOperation`][Cubux.ProductOperation] | `1` - out | 1 | Списание продукта со склада
 
+#### `order_product_fabricate` (19)
+
+Изготовление продукта в заказе.
+
+Операция | Направление | Кол-во | Описание
+-------- | ----------- | ------ | --------
+[`Cubux.OrderProductOperation`][Cubux.OrderProductOperation] | `0` - in | 1 | Добавление продукта в заказ
+[`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `1` - out | 1..n | Расход материалов со склада
+
 #### `stored_product_sell` (9)
 
 Продажа продукта вне заказа со склада готовой продукции.
