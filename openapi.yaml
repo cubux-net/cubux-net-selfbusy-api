@@ -454,7 +454,7 @@ components:
             - order_add_stored_product
             #- order_create
             #- order_dispose_product
-            #- order_income
+            - order_income
             #- order_product_close
             - order_product_fabricate
             - order_product_to_store

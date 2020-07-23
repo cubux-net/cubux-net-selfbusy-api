@@ -80,13 +80,14 @@
 [`Cubux.OrderProductOperation`][Cubux.OrderProductOperation] | `0` - in | 1 | Добавление продукта в заказ
 [`Cubux.ProductOperation`][Cubux.ProductOperation] | `1` - out | 1 | Списание продукта со склада
 
-#### `stored_product_dispose` (13)
+#### `order_income` (5)
 
-Списание готового продукта со склада готовой продукции
+Поступление дохода за заказ.
 
 Операция | Направление | Кол-во | Описание
 -------- | ----------- | ------ | --------
-[`Cubux.ProductOperation`][Cubux.ProductOperation] | `1` - out | 1 | Списание продукта со склада
+[`Cubux.OrderPayOperation`][Cubux.OrderPayOperation] | `1` - out | 1 | Уменьшение долга заказчика за заказ
+[`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `0` - in | 1 | Поступление средств на счёт
 
 #### `order_product_fabricate` (19)
 
@@ -105,6 +106,14 @@
 -------- | ----------- | ------ | --------
 [`Cubux.OrderProductOperation`][Cubux.OrderProductOperation] | `1` - out | 1 | Списание продукта из заказа
 [`Cubux.ProductOperation`][Cubux.ProductOperation] | `0` - in | 1 | Добавление продукта на склад
+
+#### `stored_product_dispose` (13)
+
+Списание готового продукта со склада готовой продукции
+
+Операция | Направление | Кол-во | Описание
+-------- | ----------- | ------ | --------
+[`Cubux.ProductOperation`][Cubux.ProductOperation] | `1` - out | 1 | Списание продукта со склада
 
 #### `stored_product_sell` (9)
 
