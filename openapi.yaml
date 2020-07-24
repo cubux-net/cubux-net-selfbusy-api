@@ -452,7 +452,7 @@ components:
             #- material_remove
             - order_add_service
             - order_add_stored_product
-            #- order_create
+            - order_create
             #- order_dispose_product
             - order_income
             #- order_product_close
@@ -586,34 +586,34 @@ components:
       required:
         - title
 
-    Cubux.OrderPosition:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        order_uuid:
-          type: string
-          format: uuid
-        category_uuid:
-          type: string
-          format: uuid
-        price:
-          type: number
-          minimum: 0.01
-        quantity:
-          type: number
-          minimum: 1e-10
-        sort:
-          type: integer
-          minimum: 0
-          maximum: 65535
-          default: 0
-      required:
-        - order_uuid
-        - category_uuid
-        - price
-        - quantity
+#    Cubux.OrderPosition:
+#      type: object
+#      properties:
+#        uuid:
+#          type: string
+#          format: uuid
+#        order_uuid:
+#          type: string
+#          format: uuid
+#        category_uuid:
+#          type: string
+#          format: uuid
+#        price:
+#          type: number
+#          minimum: 0.01
+#        quantity:
+#          type: number
+#          minimum: 1e-10
+#        sort:
+#          type: integer
+#          minimum: 0
+#          maximum: 65535
+#          default: 0
+#      required:
+#        - order_uuid
+#        - category_uuid
+#        - price
+#        - quantity
 
     Cubux.OrderPayOperation:
       type: object
@@ -639,6 +639,35 @@ components:
         - amount
 
     Cubux.OrderProductOperation:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        doc_uuid:
+          type: string
+          format: uuid
+        side:
+          $ref: '#/components/schemas/Cubux.OperationSide'
+        order_uuid:
+          type: string
+          format: uuid
+        category_uuid:
+          type: string
+          format: uuid
+          description:
+            Target category must be with `type` = `"income"`.
+        quantity:
+          type: number
+          minimum: 1e-10
+      required:
+        - doc_uuid
+        - side
+        - order_uuid
+        - category_uuid
+        - quantity
+
+    Cubux.OrderSellOperation:
       type: object
       properties:
         uuid:
@@ -968,14 +997,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.OrderPayOperation'
-        order_position:
-          type: array
-          items:
-            $ref: '#/components/schemas/Cubux.OrderPosition'
+#        order_position:
+#          type: array
+#          items:
+#            $ref: '#/components/schemas/Cubux.OrderPosition'
         order_product_operation:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.OrderProductOperation'
+        order_sell_operation:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.OrderSellOperation'
         product_operation:
           type: array
           items:
@@ -1022,9 +1055,11 @@ components:
           $ref: '#/components/schemas/UuidKeysList'
         order_pay_operation:
           $ref: '#/components/schemas/UuidKeysList'
-        order_position:
-          $ref: '#/components/schemas/UuidKeysList'
+#        order_position:
+#          $ref: '#/components/schemas/UuidKeysList'
         order_product_operation:
+          $ref: '#/components/schemas/UuidKeysList'
+        order_sell_operation:
           $ref: '#/components/schemas/UuidKeysList'
         product_operation:
           $ref: '#/components/schemas/UuidKeysList'

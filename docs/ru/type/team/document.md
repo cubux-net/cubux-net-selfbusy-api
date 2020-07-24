@@ -80,6 +80,15 @@
 [`Cubux.OrderProductOperation`][Cubux.OrderProductOperation] | `0` - in | 1 | Добавление продукта в заказ
 [`Cubux.ProductOperation`][Cubux.ProductOperation] | `1` - out | 1 | Списание продукта со склада
 
+#### `order_create` (4)
+
+Регистрация позиции в заказе.
+
+Операция | Направление | Кол-во | Описание
+-------- | ----------- | ------ | --------
+[`Cubux.OrderPayOperation`][Cubux.OrderPayOperation] | `0` - in | 1 | Увеличение долга заказчика за заказ
+[`Cubux.OrderSellOperation`][Cubux.OrderSellOperation] | `1` - out | 1 | Обязательство обеспечить продукт для заказа
+
 #### `order_income` (5)
 
 Поступление дохода за заказ.
@@ -127,7 +136,9 @@
 
 [Cubux.MaterialOperation]: ./material-operation.md
 [Cubux.OperationSide]: ./operation-side.md
+[Cubux.OrderPayOperation]: ./order-pay-operation.md
 [Cubux.OrderProductOperation]: ./order-product-operation.md
+[Cubux.OrderSellOperation]: ./order-sell-operation.md
 [Cubux.ProductOperation]: ./product-operation.md
 [Cubux.SelfAccountOperation]: ./account-operation.md
 [Cubux.SelfCategoryOperation]: ./category-operation.md

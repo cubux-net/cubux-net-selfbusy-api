@@ -25,8 +25,9 @@
 `measure_unit` | `Array:`[`Cubux.MeasureUnit`][Cubux.MeasureUnit] | Единицы измерения
 `order` | `Array:`[`Cubux.Order`][Cubux.Order] | Заказы
 `order_pay_operation` | `Array:`[`Cubux.OrderPayOperation`][Cubux.OrderPayOperation] | Операции по оплате в заказе
-`order_position` | `Array:`[`Cubux.OrderPosition`][Cubux.OrderPosition] | Позиции заказов
+`order_position` _(удалён)_ | `Array:`[`Cubux.OrderPosition`][Cubux.OrderPosition] | Позиции заказов
 `order_product_operation` | `Array:`[`Cubux.OrderProductOperation`][Cubux.OrderProductOperation] | Операции по продуктам и услугам в заказе
+`order_sell_operation` | `Array:`[`Cubux.OrderSellOperation`][Cubux.OrderSellOperation] | Операции по позициям в заказе
 `product_operation` | `Array:`[`Cubux.ProductOperation`][Cubux.ProductOperation] | Операции по продуктам на складе
 `project` | `Array:`[`Cubux.SelfProject`][Cubux.SelfProject] | Справочник проектов
 `specification` | `Array:`[`Cubux.Specification`][Cubux.Specification] | Техкарты
@@ -42,6 +43,7 @@
 [Cubux.OrderPayOperation]: ../team/order-pay-operation.md
 [Cubux.OrderPosition]: ../team/order-position.md
 [Cubux.OrderProductOperation]: ../team/order-product-operation.md
+[Cubux.OrderSellOperation]: ../team/order-sell-operation.md
 [Cubux.ProductOperation]: ../team/product-operation.md
 [Cubux.SelfAccount]: ../team/account.md
 [Cubux.SelfAccountOperation]: ../team/account-operation.md
