@@ -89,6 +89,14 @@
 [`Cubux.OrderPayOperation`][Cubux.OrderPayOperation] | `0` - in | 1 | Увеличение долга заказчика за заказ
 [`Cubux.OrderSellOperation`][Cubux.OrderSellOperation] | `1` - out | 1 | Обязательство обеспечить продукт для заказа
 
+#### `order_dispose_product` (11)
+
+Списание готового продукта из заказа.
+
+Операция | Направление | Кол-во | Описание
+-------- | ----------- | ------ | --------
+[`Cubux.OrderProductOperation`][Cubux.OrderProductOperation] | `1` - out | 1 | Списание продукта из заказа
+
 #### `order_income` (5)
 
 Поступление дохода за заказ.
