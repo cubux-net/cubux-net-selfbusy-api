@@ -106,6 +106,15 @@
 [`Cubux.OrderPayOperation`][Cubux.OrderPayOperation] | `1` - out | 1 | Уменьшение долга заказчика за заказ
 [`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `0` - in | 1 | Поступление средств на счёт
 
+#### `order_product_close` (6)
+
+Закрытие заказа по позиции.
+
+Операция | Направление | Кол-во | Описание
+-------- | ----------- | ------ | --------
+[`Cubux.OrderProductOperation`][Cubux.OrderProductOperation] | `1` - out | 1 | Списание продукта из заказа
+[`Cubux.OrderSellOperation`][Cubux.OrderSellOperation] | `0` - in | 1 | Исполнение обязательства обеспечить продукт для заказа
+
 #### `order_product_fabricate` (19)
 
 Изготовление продукта в заказе.
