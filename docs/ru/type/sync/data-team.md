@@ -15,6 +15,7 @@
 ---- | --- | --------
 `account` | `Array:`[`Cubux.SelfAccount`][Cubux.SelfAccount] | Справочник счетов
 `account_operation` | `Array:`[`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | Операции по счетам
+`capital_operation` | `Array:`[`Cubux.CapitalOperation`][Cubux.CapitalOperation] | Операции по уставному капиталу
 `category` | `Array:`[`Cubux.SelfCategory`][Cubux.SelfCategory] | Справочник категорий
 `category_link` | `Array:`[`Cubux.SelfCategoryLink`][Cubux.SelfCategoryLink] | Связи между категориями
 `category_operation` | `Array:`[`Cubux.SelfCategoryOperation`][Cubux.SelfCategoryOperation] | Операции по категориям
@@ -34,6 +35,7 @@
 `specification_ingredient` | `Array:`[`Cubux.SpecificationIngredient`][Cubux.SpecificationIngredient] | Ингредиенты техкарт
 
 
+[Cubux.CapitalOperation]: ../team/capital-operation.md
 [Cubux.Customer]: ../team/customer.md
 [Cubux.Document]: ../team/document.md
 [Cubux.MaterialOperation]: ../team/material-operation.md

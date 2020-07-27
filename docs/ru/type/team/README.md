@@ -4,6 +4,7 @@
 Содержание
 ----------
 
+*   [`Cubux.CapitalOperation`](capital-operation.md)
 *   [`Cubux.Customer`](customer.md)
 *   [`Cubux.Document`](document.md)
 *   [`Cubux.MaterialOperation`](material-operation.md)

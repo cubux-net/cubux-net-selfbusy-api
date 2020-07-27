@@ -8,6 +8,7 @@
     *   [`Cubux.Selfbusy.TeamData`](./sync/data-team.md) Данные команды
 *   [Данные команды](team/README.md)
 *   Все по алфавиту
+    *   [`Cubux.CapitalOperation`](team/capital-operation.md)
     *   [`Cubux.Customer`](team/customer.md)
     *   [`Cubux.Document`](team/document.md)
     *   [`Cubux.MaterialOperation`](team/material-operation.md)

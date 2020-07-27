@@ -403,6 +403,35 @@ components:
         `0` - "in" - increase underlying amount/quantity; `1` - "out" -
         decrease underlying amount/quantity.
 
+    Cubux.CapitalOperation:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        doc_uuid:
+          type: string
+          format: uuid
+        side:
+          $ref: '#/components/schemas/Cubux.OperationSide'
+        category_uuid:
+          type: string
+          format: uuid
+          description:
+            Target category must be with `type` = `"income"`, `is_service` =
+            `false` and have `specification_uuid` defined.
+        quantity:
+          type: number
+          minimum: 1e-10
+      required:
+        - doc_uuid
+        - side
+        - category_uuid
+        - quantity
+      description: >
+        Objects of this type are always have `side` = `0` (in), but are always
+        symmetrical in a document: both `in` and `out`.
+
     Cubux.Customer:
       type: object
       properties:
@@ -446,7 +475,7 @@ components:
           enum:
             - fabricate_to_store
             - general_expense
-            #- general_income
+            - general_income
             - material_buy
             - material_dispose
             #- material_remove
@@ -957,6 +986,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.SelfAccountOperation'
+        capital_operation:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.CapitalOperation'
         category:
           type: array
           items:
@@ -1032,6 +1065,8 @@ components:
         account:
           $ref: '#/components/schemas/UuidKeysList'
         account_operation:
+          $ref: '#/components/schemas/UuidKeysList'
+        capital_operation:
           $ref: '#/components/schemas/UuidKeysList'
         category:
           $ref: '#/components/schemas/UuidKeysList'

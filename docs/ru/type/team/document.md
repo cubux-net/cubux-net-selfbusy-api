@@ -44,6 +44,16 @@
 [`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `1` - out | 1 | Списание средств со счёта
 [`Cubux.SelfCategoryOperation`][Cubux.SelfCategoryOperation] | `0` - in | 1 | Категория расходов (тип `expense`)
 
+#### `general_income` (3)
+
+Продажа продукта вне заказа без склада готовой продукции.
+
+Операция | Направление | Кол-во | Описание
+-------- | ----------- | ------ | --------
+[`Cubux.CapitalOperation`][Cubux.CapitalOperation] | `0` - in | 1 | Оборот продукта
+[`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `1` - out | 1..n | Расход материалов со склада
+[`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `0` - in | 1 | Поступление средств на счёт
+
 #### `material_buy` (2)
 
 Приобретение одного материала на склад посредством списания средств с одного
@@ -112,6 +122,7 @@
 
 Операция | Направление | Кол-во | Описание
 -------- | ----------- | ------ | --------
+[`Cubux.CapitalOperation`][Cubux.CapitalOperation] | `0` - in | 1 | Оборот продукта
 [`Cubux.OrderProductOperation`][Cubux.OrderProductOperation] | `1` - out | 1 | Списание продукта из заказа
 [`Cubux.OrderSellOperation`][Cubux.OrderSellOperation] | `0` - in | 1 | Исполнение обязательства обеспечить продукт для заказа
 
@@ -147,10 +158,12 @@
 
 Операция | Направление | Кол-во | Описание
 -------- | ----------- | ------ | --------
+[`Cubux.CapitalOperation`][Cubux.CapitalOperation] | `0` - in | 1 | Оборот продукта
 [`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `0` - in | 1 | Поступление средств на счёт
 [`Cubux.ProductOperation`][Cubux.ProductOperation] | `1` - out | 1 | Списание продукта со склада
 
 
+[Cubux.CapitalOperation]: ./capital-operation.md
 [Cubux.MaterialOperation]: ./material-operation.md
 [Cubux.OperationSide]: ./operation-side.md
 [Cubux.OrderPayOperation]: ./order-pay-operation.md
