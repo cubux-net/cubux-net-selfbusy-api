@@ -23,7 +23,7 @@
 *   Связь с техкартой `specification_uuid` обязательна для доходной категории
     (`type` есть `"income"`), описывающей товар (`is_service` есть `false`).
     В остальных случаях поле сбрасывается в `null`.
-*   Поля `cost` и `is_service` имеют смысл только для доходной категорий (`type`
+*   Поля `cost` и `is_service` имеют смысл только для доходной категории (`type`
     есть `"income"`).
 
 [Cubux.Specification]: ./specification.md
