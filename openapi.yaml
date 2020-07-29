@@ -403,7 +403,7 @@ components:
         `0` - "in" - increase underlying amount/quantity; `1` - "out" -
         decrease underlying amount/quantity.
 
-    Cubux.CapitalOperation:
+    Cubux.BaseOperation:
       type: object
       properties:
         uuid:
@@ -414,23 +414,34 @@ components:
           format: uuid
         side:
           $ref: '#/components/schemas/Cubux.OperationSide'
-        category_uuid:
-          type: string
-          format: uuid
-          description:
-            Target category must be with `type` = `"income"`, `is_service` =
-            `false` and have `specification_uuid` defined.
-        quantity:
+        amount:
           type: number
-          minimum: 1e-10
+          minimum: 0.01
       required:
         - doc_uuid
         - side
-        - category_uuid
-        - quantity
-      description: >
-        Objects of this type are always have `side` = `0` (in), but are always
-        symmetrical in a document: both `in` and `out`.
+        - amount
+
+    Cubux.CapitalOperation:
+      allOf:
+        - $ref: '#/components/schemas/Cubux.BaseOperation'
+        - type: object
+          properties:
+            category_uuid:
+              type: string
+              format: uuid
+              description:
+                Target category must be with `type` = `"income"`, `is_service` =
+                `false` and have `specification_uuid` defined.
+            quantity:
+              type: number
+              minimum: 1e-10
+          required:
+            - category_uuid
+            - quantity
+          description: >
+            Objects of this type are always have `side` = `0` (in), but are always
+            symmetrical in a document: both `in` and `out`.
 
     Cubux.Customer:
       type: object
@@ -498,31 +509,23 @@ components:
         - type
 
     Cubux.MaterialOperation:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        doc_uuid:
-          type: string
-          format: uuid
-        side:
-          $ref: '#/components/schemas/Cubux.OperationSide'
-        material_uuid:
-          type: string
-          format: uuid
-        unit_uuid:
-          type: string
-          format: uuid
-        quantity:
-          type: number
-          minimum: 1e-10
-      required:
-        - doc_uuid
-        - side
-        - material_uuid
-        - unit_uuid
-        - quantity
+      allOf:
+        - $ref: '#/components/schemas/Cubux.BaseOperation'
+        - type: object
+          properties:
+            material_uuid:
+              type: string
+              format: uuid
+            unit_uuid:
+              type: string
+              format: uuid
+            quantity:
+              type: number
+              minimum: 1e-10
+          required:
+            - material_uuid
+            - unit_uuid
+            - quantity
 
     Cubux.MaterialSource:
       type: object
@@ -645,111 +648,75 @@ components:
 #        - quantity
 
     Cubux.OrderPayOperation:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        doc_uuid:
-          type: string
-          format: uuid
-        side:
-          $ref: '#/components/schemas/Cubux.OperationSide'
-        order_uuid:
-          type: string
-          format: uuid
-        amount:
-          type: number
-          minimum: 0.01
-      required:
-        - doc_uuid
-        - side
-        - order_uuid
-        - amount
+      allOf:
+        - $ref: '#/components/schemas/Cubux.BaseOperation'
+        - type: object
+          properties:
+            order_uuid:
+              type: string
+              format: uuid
+          required:
+            - order_uuid
 
     Cubux.OrderProductOperation:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        doc_uuid:
-          type: string
-          format: uuid
-        side:
-          $ref: '#/components/schemas/Cubux.OperationSide'
-        order_uuid:
-          type: string
-          format: uuid
-        category_uuid:
-          type: string
-          format: uuid
-          description:
-            Target category must be with `type` = `"income"`.
-        quantity:
-          type: number
-          minimum: 1e-10
-      required:
-        - doc_uuid
-        - side
-        - order_uuid
-        - category_uuid
-        - quantity
+      allOf:
+        - $ref: '#/components/schemas/Cubux.BaseOperation'
+        - type: object
+          properties:
+            order_uuid:
+              type: string
+              format: uuid
+            category_uuid:
+              type: string
+              format: uuid
+              description:
+                Target category must be with `type` = `"income"`.
+            quantity:
+              type: number
+              minimum: 1e-10
+          required:
+            - order_uuid
+            - category_uuid
+            - quantity
 
     Cubux.OrderSellOperation:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        doc_uuid:
-          type: string
-          format: uuid
-        side:
-          $ref: '#/components/schemas/Cubux.OperationSide'
-        order_uuid:
-          type: string
-          format: uuid
-        category_uuid:
-          type: string
-          format: uuid
-          description:
-            Target category must be with `type` = `"income"`.
-        quantity:
-          type: number
-          minimum: 1e-10
-      required:
-        - doc_uuid
-        - side
-        - order_uuid
-        - category_uuid
-        - quantity
+      allOf:
+        - $ref: '#/components/schemas/Cubux.BaseOperation'
+        - type: object
+          properties:
+            order_uuid:
+              type: string
+              format: uuid
+            category_uuid:
+              type: string
+              format: uuid
+              description:
+                Target category must be with `type` = `"income"`.
+            quantity:
+              type: number
+              minimum: 1e-10
+          required:
+            - order_uuid
+            - category_uuid
+            - quantity
 
     Cubux.ProductOperation:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        doc_uuid:
-          type: string
-          format: uuid
-        side:
-          $ref: '#/components/schemas/Cubux.OperationSide'
-        category_uuid:
-          type: string
-          format: uuid
-          description:
-            Target category must be with `type` = `"income"`, `is_service` =
-            `false` and have `specification_uuid` defined.
-        quantity:
-          type: number
-          minimum: 1e-10
-      required:
-        - doc_uuid
-        - side
-        - category_uuid
-        - quantity
+      allOf:
+        - $ref: '#/components/schemas/Cubux.BaseOperation'
+        - type: object
+          properties:
+            category_uuid:
+              type: string
+              format: uuid
+              description:
+                Target category must be with `type` = `"income"`, `is_service` =
+                `false` and have `specification_uuid` defined.
+            quantity:
+              type: number
+              minimum: 1e-10
+          required:
+            - category_uuid
+            - quantity
 
     Cubux.SelfAccount:
       type: object
@@ -774,27 +741,15 @@ components:
         - name
 
     Cubux.SelfAccountOperation:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        doc_uuid:
-          type: string
-          format: uuid
-        side:
-          $ref: '#/components/schemas/Cubux.OperationSide'
-        account_uuid:
-          type: string
-          format: uuid
-        amount:
-          type: number
-          minimum: 0.01
-      required:
-        - doc_uuid
-        - side
-        - account_uuid
-        - amount
+      allOf:
+        - $ref: '#/components/schemas/Cubux.BaseOperation'
+        - type: object
+          properties:
+            account_uuid:
+              type: string
+              format: uuid
+          required:
+            - account_uuid
 
     Cubux.SelfCategory:
       type: object
@@ -870,23 +825,15 @@ components:
             A link between specific income and expense categories.
 
     Cubux.SelfCategoryOperation:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        doc_uuid:
-          type: string
-          format: uuid
-        side:
-          $ref: '#/components/schemas/Cubux.OperationSide'
-        category_uuid:
-          type: string
-          format: uuid
-      required:
-        - doc_uuid
-        - side
-        - category_uuid
+      allOf:
+        - $ref: '#/components/schemas/Cubux.BaseOperation'
+        - type: object
+          properties:
+            category_uuid:
+              type: string
+              format: uuid
+          required:
+            - category_uuid
 
     Cubux.SelfProject:
       type: object

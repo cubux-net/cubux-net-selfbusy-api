@@ -11,8 +11,8 @@
 `uuid` **PK** | `uuid` | UUID операции.
 `doc_uuid` | `uuid` | Обязательно. UUID документа, к которому относится.
 `side` | [`Cubux.OperationSide`][Cubux.OperationSide] | Обязательно. Направление операции.
-`order_uuid` | `uuid` | Обязательно. UUID заказа [`Cubux.Order`][Cubux.Order].
 `amount` | `float` | Обязательно. Сумма. Минимум `0.01`.
+`order_uuid` | `uuid` | Обязательно. UUID заказа [`Cubux.Order`][Cubux.Order].
 
 **Важно**: Объекты данного типа должны обрабатываться только вместе с
 соответствующим документом. Прямое изменение и удаление невозможно.
