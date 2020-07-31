@@ -19,6 +19,7 @@
 `category` | `Array:`[`Cubux.SelfCategory`][Cubux.SelfCategory] | Справочник категорий
 `category_link` | `Array:`[`Cubux.SelfCategoryLink`][Cubux.SelfCategoryLink] | Связи между категориями
 `category_operation` | `Array:`[`Cubux.SelfCategoryOperation`][Cubux.SelfCategoryOperation] | Операции по категориям
+`category_specification` | `Array:`[`Cubux.SelfCategorySpecification`][Cubux.SelfCategorySpecification] | Связи категорий с тех.картами
 `customer` | `Array:`[`Cubux.Customer`][Cubux.Customer] | Справочник заказчиков
 `document` | `Array:`[`Cubux.Document`][Cubux.Document] | Документы
 `material_operation` | `Array:`[`Cubux.MaterialOperation`][Cubux.MaterialOperation] | Операции по материалам на складе
@@ -52,6 +53,7 @@
 [Cubux.SelfCategory]: ../team/category.md
 [Cubux.SelfCategoryLink]: ../team/category-link.md
 [Cubux.SelfCategoryOperation]: ../team/category-operation.md
+[Cubux.SelfCategorySpecification]: ../team/category-specification.md
 [Cubux.SelfProject]: ../team/project.md
 [Cubux.Specification]: ../team/specification.md
 [Cubux.SpecificationIngredient]: ../team/specification-ingredient.md

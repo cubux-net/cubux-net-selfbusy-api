@@ -22,6 +22,7 @@
 *   [`Cubux.SelfCategory`](category.md)
 *   [`Cubux.SelfCategoryLink`](category-link.md)
 *   [`Cubux.SelfCategoryOperation`](category-operation.md)
+*   [`Cubux.SelfCategorySpecification`](category-specification.md)
 *   [`Cubux.SelfProject`](project.md)
 *   [`Cubux.Specification`](specification.md)
 *   [`Cubux.SpecificationIngredient`](specification-ingredient.md)

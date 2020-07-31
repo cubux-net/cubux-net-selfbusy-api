@@ -432,7 +432,7 @@ components:
               format: uuid
               description:
                 Target category must be with `type` = `"income"`, `is_service` =
-                `false` and have `specification_uuid` defined.
+                `false`.
             quantity:
               type: number
               minimum: 1e-10
@@ -710,7 +710,7 @@ components:
               format: uuid
               description:
                 Target category must be with `type` = `"income"`, `is_service` =
-                `false` and have `specification_uuid` defined.
+                `false`.
             quantity:
               type: number
               minimum: 1e-10
@@ -762,21 +762,16 @@ components:
           #allOf:
           #  - $ref: '#/components/schemas/Cubux.TurnoverType',
           #  - {}
+        parent_uuid:
+          type: string
+          format: uuid
+          nullable: true
+          default: null
         name:
           type: string
           minLength: 1
           maxLength: 255
           example: Lorem ipsum
-        specification_uuid:
-          type: string
-          format: uuid
-          nullable: true
-          default: null
-          example: null
-          description:
-            Linked specification `Cubux.Specification`. Required when `type` is
-            `"income"` and `is_service` is `false`. Will be ignored and resetted
-            to `null` in other cases.
         cost:
           type: number
           minimum: 0
@@ -800,6 +795,26 @@ components:
       required:
         - type
         - name
+
+    Cubux.SelfCategorySpecification:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        category_uuid:
+          type: string
+          format: uuid
+        specification_uuid:
+          type: string
+          format: uuid
+        quantity:
+          type: number
+          default: 1
+          minimum: 0.001
+      required:
+        - category_uuid
+        - specification_uuid
 
     Cubux.SelfCategoryLinkKey:
       type: object
@@ -949,6 +964,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.SelfCategoryOperation'
+        category_specification:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.SelfCategorySpecification'
         customer:
           type: array
           items:
@@ -1022,6 +1041,8 @@ components:
           items:
             $ref: '#/components/schemas/Cubux.SelfCategoryLinkKey'
         category_operation:
+          $ref: '#/components/schemas/UuidKeysList'
+        category_specification:
           $ref: '#/components/schemas/UuidKeysList'
         customer:
           $ref: '#/components/schemas/UuidKeysList'
