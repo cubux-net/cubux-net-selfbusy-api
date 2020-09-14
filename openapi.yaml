@@ -772,6 +772,9 @@ components:
           minLength: 1
           maxLength: 255
           example: Lorem ipsum
+        limit:
+          type: number
+          minimum: 0
         cost:
           type: number
           minimum: 0
