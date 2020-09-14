@@ -443,6 +443,7 @@ components:
             Objects of this type are always have `side` = `0` (in), but are always
             symmetrical in a document: both `in` and `out`.
 
+
     Cubux.Customer:
       type: object
       properties:
@@ -472,6 +473,14 @@ components:
         is_hidden:
           type: boolean
           default: false
+        icon_uuid:
+          type: string
+          format: uuid
+          nullable: true
+          default: null
+          description:
+            Optional reference to `Cubux.Image` with `purpose` = `"customer"`
+            and `size_type` = `"icon"`.
       required:
         - name
 
@@ -507,6 +516,56 @@ components:
       required:
         - uuid
         - type
+
+    Cubux.Image:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        purpose:
+          type: string
+          enum:
+            - customer
+            - self_account
+            - self_category
+        size_type:
+          type: string
+          enum:
+            - icon
+            - photo
+        datetime:
+          type: string
+          format: 'date-time'
+        has_body:
+          type: boolean
+          readOnly: true
+        file_size:
+          type: integer
+          minimum: 0
+          nullable: true
+          readOnly: true
+        file_type:
+          type: string
+          enum:
+            - jpg
+            - png
+          nullable: true
+          readOnly: true
+        width:
+          type: integer
+          minimum: 0
+          nullable: true
+          readOnly: true
+        height:
+          type: integer
+          minimum: 0
+          nullable: true
+          readOnly: true
+      required:
+        - uuid
+        - purpose
+        - size_type
 
     Cubux.MaterialOperation:
       allOf:
@@ -737,6 +796,14 @@ components:
         is_hidden:
           type: boolean
           default: false
+        icon_uuid:
+          type: string
+          format: uuid
+          nullable: true
+          default: null
+          description:
+            Optional reference to `Cubux.Image` with `purpose` = `"self_account"`
+            and `size_type` = `"icon"`.
       required:
         - name
 
@@ -795,6 +862,14 @@ components:
         is_hidden:
           type: boolean
           default: false
+        icon_uuid:
+          type: string
+          format: uuid
+          nullable: true
+          default: null
+          description:
+            Optional reference to `Cubux.Image` with `purpose` = `"self_category"`
+            and `size_type` = `"icon"`.
       required:
         - type
         - name
@@ -979,6 +1054,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.Document'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.Image'
         material_operation:
           type: array
           items:
@@ -1050,6 +1129,8 @@ components:
         customer:
           $ref: '#/components/schemas/UuidKeysList'
         document:
+          $ref: '#/components/schemas/UuidKeysList'
+        images:
           $ref: '#/components/schemas/UuidKeysList'
         material_operation:
           $ref: '#/components/schemas/UuidKeysList'

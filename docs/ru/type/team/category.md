@@ -16,6 +16,7 @@
 `is_service`  | `boolean` | Описывает ли категория услугу.
 `sort`        | `uint16`  | Порядок сортировки.
 `is_hidden`   | `boolean` | Является ли скрытой.
+`icon_uuid`   | `uuid`, NULL | UUID изображения [`Cubux.Image`][Cubux.Image] с `purpose` = `"self_category"` и `size_type` = `"icon"`
 
 **Важно**: Поля `type`, `parent_uuid` и `is_service` можно указать только при
 создании. Дальнейшее изменение невозможно. Вместо изменения этих полей
@@ -26,3 +27,6 @@
 
 *   Поля `cost` и `is_service` имеют смысл только для доходной категории (`type`
     есть `"income"`).
+
+
+[Cubux.Image]: ./image.md

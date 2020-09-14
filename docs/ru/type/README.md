@@ -11,6 +11,7 @@
     *   [`Cubux.CapitalOperation`](team/capital-operation.md)
     *   [`Cubux.Customer`](team/customer.md)
     *   [`Cubux.Document`](team/document.md)
+    *   [`Cubux.Image`](team/image.md)
     *   [`Cubux.MaterialOperation`](team/material-operation.md)
     *   [`Cubux.MaterialSource`](team/material-source.md)
     *   [`Cubux.MeasureUnit`](team/measure-unit.md)

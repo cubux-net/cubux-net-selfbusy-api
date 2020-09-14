@@ -7,6 +7,7 @@
 *   [`Cubux.CapitalOperation`](capital-operation.md)
 *   [`Cubux.Customer`](customer.md)
 *   [`Cubux.Document`](document.md)
+*   [`Cubux.Image`](image.md)
 *   [`Cubux.MaterialOperation`](material-operation.md)
 *   [`Cubux.MaterialSource`](material-source.md)
 *   [`Cubux.MeasureUnit`](measure-unit.md)
