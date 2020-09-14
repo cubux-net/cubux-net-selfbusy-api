@@ -572,6 +572,8 @@ components:
         - $ref: '#/components/schemas/Cubux.BaseOperation'
         - type: object
           properties:
+            amount:
+              minimum: 1e-10
             material_uuid:
               type: string
               format: uuid
