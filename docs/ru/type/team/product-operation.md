@@ -13,6 +13,7 @@
 `side` | [`Cubux.OperationSide`][Cubux.OperationSide] | Обязательно. Направление операции.
 `amount` | `float` | Обязательно. Сумма. Минимум `0.01`.
 `category_uuid` | `uuid` | Обязательно. UUID категории [`Cubux.SelfCategory`][Cubux.SelfCategory].
+`product_hash` | `md5`, NULL | Ссылка на описание структуры продукта [`Cubux.Product`][Cubux.Product]
 `quantity` | `float` | Обязательно. Минимум `1e-10`.
 
 **Важно**: Объекты данного типа должны обрабатываться только вместе с
@@ -26,4 +27,5 @@
 
 [Cubux.Document]: ./document.md
 [Cubux.OperationSide]: ./operation-side.md
+[Cubux.Product]: ./product.md
 [Cubux.SelfCategory]: ./category.md

@@ -14,6 +14,7 @@
 `amount` | `float` | Обязательно. Сумма. Минимум `0.01`.
 `order_uuid` | `uuid` | Обязательно. UUID заказа [`Cubux.Order`][Cubux.Order].
 `category_uuid` | `uuid` | Обязательно. UUID категории [`Cubux.SelfCategory`][Cubux.SelfCategory].
+`product_hash` | `md5`, NULL | Ссылка на описание структуры продукта [`Cubux.Product`][Cubux.Product]
 `quantity` | `float` | Обязательно. Количество. Минимум `1e-10`.
 
 **Важно**: Объекты данного типа должны обрабатываться только вместе с
@@ -27,4 +28,5 @@
 [Cubux.Document]: ./document.md
 [Cubux.OperationSide]: ./operation-side.md
 [Cubux.Order]: ./order.md
+[Cubux.Product]: ./product.md
 [Cubux.SelfCategory]: ./category.md

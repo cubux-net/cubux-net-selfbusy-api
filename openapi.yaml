@@ -189,6 +189,11 @@ components:
       default: null
       example: null
 
+    productHash:
+      type: string
+      format: md5
+      example: 48698c04cd1b4d9a99bb60ab9d438b06
+
     ValidationError:
       type: object
       properties:
@@ -431,8 +436,12 @@ components:
               type: string
               format: uuid
               description:
-                Target category must be with `type` = `"income"`, `is_service` =
-                `false`.
+                Target category must be with `type` = `"income"`.
+            product_hash:
+              allOf:
+                - $ref: '#/components/schemas/productHash'
+              nullable: true
+              default: null
             quantity:
               type: number
               minimum: 1e-10
@@ -732,6 +741,11 @@ components:
               format: uuid
               description:
                 Target category must be with `type` = `"income"`.
+            product_hash:
+              allOf:
+                - $ref: '#/components/schemas/productHash'
+              nullable: true
+              default: null
             quantity:
               type: number
               minimum: 1e-10
@@ -753,6 +767,11 @@ components:
               format: uuid
               description:
                 Target category must be with `type` = `"income"`.
+            product_hash:
+              allOf:
+                - $ref: '#/components/schemas/productHash'
+              nullable: true
+              default: null
             quantity:
               type: number
               minimum: 1e-10
@@ -760,6 +779,79 @@ components:
             - order_uuid
             - category_uuid
             - quantity
+
+    Cubux.Product:
+      type: object
+      properties:
+        hash:
+          $ref: '#/components/schemas/productHash'
+        category_uuid:
+          type: string
+          format: uuid
+          nullable: true
+          default: null
+        specification_uuid:
+          type: string
+          format: uuid
+          nullable: true
+          default: null
+      required:
+        - hash
+
+    Cubux.ProductAddBase:
+      type: object
+      properties:
+        parent_product_hash:
+          $ref: '#/components/schemas/productHash'
+        quantity:
+          oneOf:
+            - type: string
+              format: number
+            - type: number
+              minimum: 1e-10
+              writeOnly: true
+          default: 1
+          description:
+            A string form containing a number is preferred to not loose
+            floating point precision.
+      required:
+        - parent_product_hash
+
+    Cubux.ProductAddMaterial:
+      allOf:
+        - $ref: '#/components/schemas/Cubux.ProductAddBase'
+        - type: object
+          properties:
+            material_uuid:
+              type: string
+              format: uuid
+            unit_uuid:
+              type: string
+              format: uuid
+          required:
+            - material_uuid
+            - unit_uuid
+
+    Cubux.ProductAddProduct:
+      allOf:
+        - $ref: '#/components/schemas/Cubux.ProductAddBase'
+        - type: object
+          properties:
+            product_hash:
+              $ref: '#/components/schemas/productHash'
+          required:
+            - product_hash
+
+    Cubux.ProductAddSpecification:
+      allOf:
+        - $ref: '#/components/schemas/Cubux.ProductAddBase'
+        - type: object
+          properties:
+            specification_uuid:
+              type: string
+              format: uuid
+          required:
+            - specification_uuid
 
     Cubux.ProductOperation:
       allOf:
@@ -772,6 +864,11 @@ components:
               description:
                 Target category must be with `type` = `"income"`, `is_service` =
                 `false`.
+            product_hash:
+              allOf:
+                - $ref: '#/components/schemas/productHash'
+              nullable: true
+              default: null
             quantity:
               type: number
               minimum: 1e-10
@@ -1092,6 +1189,22 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.OrderSellOperation'
+        product:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.Product'
+        product_add_material:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.ProductAddMaterial'
+        product_add_product:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.ProductAddProduct'
+        product_add_specification:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.ProductAddSpecification'
         product_operation:
           type: array
           items:
@@ -1163,7 +1276,15 @@ components:
       allOf:
         - $ref: '#/components/schemas/Cubux.Team.DeletionsPatch'
         - type: object
-          properties: {}
+          properties:
+            product:
+              $ref: '#/components/schemas/null'
+            product_add_material:
+              $ref: '#/components/schemas/null'
+            product_add_product:
+              $ref: '#/components/schemas/null'
+            product_add_specification:
+              $ref: '#/components/schemas/null'
 
     Cubux.Team.Snapshot:
       allOf:
