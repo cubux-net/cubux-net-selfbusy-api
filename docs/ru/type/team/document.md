@@ -32,7 +32,7 @@
 
 Операция | Направление | Кол-во | Описание
 -------- | ----------- | ------ | --------
-[`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `1` - out | 1..n | Расход материалов со склада
+[`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `1` - out | 0..n | Расход материалов со склада
 [`Cubux.ProductOperation`][Cubux.ProductOperation] | `0` - in | 1 | Поступление продукта на склад
 
 #### `general_expense` (1)
@@ -51,7 +51,7 @@
 Операция | Направление | Кол-во | Описание
 -------- | ----------- | ------ | --------
 [`Cubux.CapitalOperation`][Cubux.CapitalOperation] | `0` - in | 1 | Оборот продукта
-[`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `1` - out | 1..n | Расход материалов со склада
+[`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `1` - out | 0..n | Расход материалов со склада
 [`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `0` - in | 1 | Поступление средств на счёт
 
 #### `material_buy` (2)
@@ -133,7 +133,7 @@
 Операция | Направление | Кол-во | Описание
 -------- | ----------- | ------ | --------
 [`Cubux.OrderProductOperation`][Cubux.OrderProductOperation] | `0` - in | 1 | Добавление продукта в заказ
-[`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `1` - out | 1..n | Расход материалов со склада
+[`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `1` - out | 0..n | Расход материалов со склада
 
 #### `order_product_to_store` (12)
 
