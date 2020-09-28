@@ -435,8 +435,10 @@ components:
             category_uuid:
               type: string
               format: uuid
+              nullable: true
               description:
-                Target category must be with `type` = `"income"`.
+                Target category must be with `type` = `"income"`. Both
+                `category_uuid` and `product_hash` cannot be `null` together.
             product_hash:
               allOf:
                 - $ref: '#/components/schemas/productHash'
@@ -446,12 +448,10 @@ components:
               type: number
               minimum: 1e-10
           required:
-            - category_uuid
             - quantity
           description: >
             Objects of this type are always have `side` = `0` (in), but are always
             symmetrical in a document: both `in` and `out`.
-
 
     Cubux.Customer:
       type: object
@@ -739,8 +739,10 @@ components:
             category_uuid:
               type: string
               format: uuid
+              nullable: true
               description:
-                Target category must be with `type` = `"income"`.
+                Target category must be with `type` = `"income"`. Both
+                `category_uuid` and `product_hash` cannot be `null` together.
             product_hash:
               allOf:
                 - $ref: '#/components/schemas/productHash'
@@ -751,7 +753,6 @@ components:
               minimum: 1e-10
           required:
             - order_uuid
-            - category_uuid
             - quantity
 
     Cubux.OrderSellOperation:
@@ -765,8 +766,10 @@ components:
             category_uuid:
               type: string
               format: uuid
+              nullable: true
               description:
-                Target category must be with `type` = `"income"`.
+                Target category must be with `type` = `"income"`. Both
+                `category_uuid` and `product_hash` cannot be `null` together.
             product_hash:
               allOf:
                 - $ref: '#/components/schemas/productHash'
@@ -777,7 +780,6 @@ components:
               minimum: 1e-10
           required:
             - order_uuid
-            - category_uuid
             - quantity
 
     Cubux.Product:
@@ -861,9 +863,10 @@ components:
             category_uuid:
               type: string
               format: uuid
+              nullable: true
               description:
-                Target category must be with `type` = `"income"`, `is_service` =
-                `false`.
+                Target category must be with `type` = `"income"`. Both
+                `category_uuid` and `product_hash` cannot be `null` together.
             product_hash:
               allOf:
                 - $ref: '#/components/schemas/productHash'
@@ -873,7 +876,6 @@ components:
               type: number
               minimum: 1e-10
           required:
-            - category_uuid
             - quantity
 
     Cubux.SelfAccount:

@@ -13,7 +13,7 @@
 `side` | [`Cubux.OperationSide`][Cubux.OperationSide] | Обязательно. Направление операции.
 `amount` | `float` | Обязательно. Сумма. Минимум `0.01`.
 `order_uuid` | `uuid` | Обязательно. UUID заказа [`Cubux.Order`][Cubux.Order].
-`category_uuid` | `uuid` | Обязательно. UUID категории [`Cubux.SelfCategory`][Cubux.SelfCategory].
+`category_uuid` | `uuid`, NULL | UUID категории [`Cubux.SelfCategory`][Cubux.SelfCategory].
 `product_hash` | `md5`, NULL | Ссылка на описание структуры продукта [`Cubux.Product`][Cubux.Product]
 `quantity` | `float` | Обязательно. Количество. Минимум `1e-10`.
 
@@ -21,6 +21,9 @@
 соответствующим документом. Прямое изменение и удаление невозможно.
 
 **Важно**: Категория должна доходной (`type` = `"income"`).
+
+**Важно**: Категория `category_uuid` и продукт `product_hash` не могут быть NULL
+вместе.
 
 > TODO: Вероятно, придётся добавить тип операции.
 

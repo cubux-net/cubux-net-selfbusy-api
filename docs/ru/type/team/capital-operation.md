@@ -12,7 +12,7 @@
 `doc_uuid` | `uuid` | Обязательно. UUID документа, к которому относится.
 `side` | [`Cubux.OperationSide`][Cubux.OperationSide] | Обязательно. Направление операции. **Всегда `0` - in**.
 `amount` | `float` | Обязательно. Сумма. Минимум `0.01`.
-`category_uuid` | `uuid` | Обязательно. UUID категории [`Cubux.SelfCategory`][Cubux.SelfCategory].
+`category_uuid` | `uuid`, NULL | UUID категории [`Cubux.SelfCategory`][Cubux.SelfCategory].
 `product_hash` | `md5`, NULL | Ссылка на описание структуры продукта [`Cubux.Product`][Cubux.Product]
 `quantity` | `float` | Обязательно. Минимум `1e-10`.
 
@@ -23,8 +23,10 @@
 `0` - in, но отвечают одновременно за обе стороны, поскольку они всегда парны в
 документе.
 
-**Важно**: Категория должна доходной (`type` = `"income"`), и должна описывать
-продукт с тех.картой (`is_service` = `false`).
+**Важно**: Категория должна доходной (`type` = `"income"`).
+
+**Важно**: Категория `category_uuid` и продукт `product_hash` не могут быть NULL
+вместе.
 
 > TODO: Вероятно, придётся добавить тип операции.
 
