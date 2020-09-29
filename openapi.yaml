@@ -505,6 +505,8 @@ components:
             - fabricate_to_store
             - general_expense
             - general_income
+            - initial_expense
+            - initial_income
             - material_buy
             - material_dispose
             #- material_remove

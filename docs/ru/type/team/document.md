@@ -54,6 +54,22 @@
 [`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `1` - out | 0..n | Расход материалов со склада
 [`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `0` - in | 1 | Поступление средств на счёт
 
+#### `initial_expense` (20a)
+
+Начальный остаток-расход.
+
+Операция | Направление | Кол-во | Описание
+-------- | ----------- | ------ | --------
+[`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `1` - out | 1 | Списание средств со счёта
+
+#### `initial_income` (20)
+
+Начальный остаток-приход.
+
+Операция | Направление | Кол-во | Описание
+-------- | ----------- | ------ | --------
+[`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `0` - in | 1 | Поступление средств на счёт
+
 #### `material_buy` (2)
 
 Приобретение одного материала на склад посредством списания средств с одного
