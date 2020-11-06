@@ -13,9 +13,13 @@
 `side` | [`Cubux.OperationSide`][Cubux.OperationSide] | Обязательно. Направление операции.
 `amount` | `float` | Обязательно. Сумма. Минимум `0.01`.
 `order_uuid` | `uuid` | Обязательно. UUID заказа [`Cubux.Order`][Cubux.Order].
+`position_uuid` | `uuid` | Обязательно. UUID позиции **\*1)**
 `category_uuid` | `uuid`, NULL | UUID категории [`Cubux.SelfCategory`][Cubux.SelfCategory].
 `product_hash` | `md5`, NULL | Ссылка на описание структуры продукта [`Cubux.Product`][Cubux.Product]
 `quantity` | `float` | Обязательно. Количество. Минимум `1e-10`.
+
+**\*1)** UUID позиции не ссылается на объект позиции ввиду отсутствия отдельного
+определения позиции заказа.
 
 **Важно**: Объекты данного типа должны обрабатываться только вместе с
 соответствующим документом. Прямое изменение и удаление невозможно.

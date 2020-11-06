@@ -738,6 +738,9 @@ components:
             order_uuid:
               type: string
               format: uuid
+            position_uuid:
+              type: string
+              format: uuid
             category_uuid:
               type: string
               format: uuid
@@ -755,6 +758,7 @@ components:
               minimum: 1e-10
           required:
             - order_uuid
+            - position_uuid
             - quantity
 
     Cubux.OrderSellOperation:
@@ -765,6 +769,9 @@ components:
             order_uuid:
               type: string
               format: uuid
+            position_uuid:
+              type: string
+              format: uuid
             category_uuid:
               type: string
               format: uuid
@@ -782,6 +789,7 @@ components:
               minimum: 1e-10
           required:
             - order_uuid
+            - position_uuid
             - quantity
 
     Cubux.Product:
