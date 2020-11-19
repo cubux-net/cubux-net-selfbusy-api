@@ -625,6 +625,13 @@ components:
         uuid:
           type: string
           format: uuid
+        type:
+          type: string
+          enum:
+            - si
+            - uk
+          default: si
+          example: si
         name:
           type: string
           minLength: 1
