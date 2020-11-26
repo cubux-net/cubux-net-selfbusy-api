@@ -490,6 +490,9 @@ components:
           description:
             Optional reference to `Cubux.Image` with `purpose` = `"customer"`
             and `size_type` = `"icon"`.
+        icon_name:
+          type: string
+          maxLength: 32
       required:
         - name
 
@@ -922,6 +925,9 @@ components:
           description:
             Optional reference to `Cubux.Image` with `purpose` = `"self_account"`
             and `size_type` = `"icon"`.
+        icon_name:
+          type: string
+          maxLength: 32
       required:
         - name
 
@@ -988,6 +994,9 @@ components:
           description:
             Optional reference to `Cubux.Image` with `purpose` = `"self_category"`
             and `size_type` = `"icon"`.
+        icon_name:
+          type: string
+          maxLength: 32
       required:
         - type
         - name

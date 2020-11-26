@@ -12,6 +12,7 @@
 `sort`        | `uint16`  | Порядок сортировки
 `is_hidden`   | `boolean` | Является ли скрытым
 `icon_uuid`   | `uuid`, NULL | UUID изображения [`Cubux.Image`][Cubux.Image] с `purpose` = `"self_account"` и `size_type` = `"icon"`
+`icon_name`   | `string`  | Необязательно. Имя предопределённой иконки. Максимум 32 символа.
 
 
 [Cubux.Image]: ./image.md

@@ -17,6 +17,7 @@
 `sort`        | `uint16`  | Порядок сортировки.
 `is_hidden`   | `boolean` | Является ли скрытой.
 `icon_uuid`   | `uuid`, NULL | UUID изображения [`Cubux.Image`][Cubux.Image] с `purpose` = `"self_category"` и `size_type` = `"icon"`
+`icon_name`   | `string`  | Необязательно. Имя предопределённой иконки. Максимум 32 символа.
 
 **Важно**: Поля `type`, `parent_uuid` и `is_service` можно указать только при
 создании. Дальнейшее изменение невозможно. Вместо изменения этих полей
