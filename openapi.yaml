@@ -588,6 +588,9 @@ components:
           properties:
             amount:
               minimum: 1e-10
+            amount_dummy:
+              type: boolean
+              default: false
             material_uuid:
               type: string
               format: uuid

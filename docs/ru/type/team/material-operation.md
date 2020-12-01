@@ -12,6 +12,7 @@
 `doc_uuid` | `uuid` | Обязательно. UUID документа, к которому относится.
 `side` | [`Cubux.OperationSide`][Cubux.OperationSide] | Обязательно. Направление операции.
 `amount` | `float` | Обязательно. Сумма. Минимум `1e-10`.
+`amount_dummy` | `boolean` | Является ли сумма фиктивной (сумма получена от пользователя напрямую, а не вычислена по складу материалов).
 `material_uuid` | `uuid` | Обязательно. UUID материала [`Cubux.MaterialSource`][Cubux.MaterialSource].
 `unit_uuid` | `uuid` | Обязательно. UUID единицы измерения [`Cubux.MeasureUnit`][Cubux.MeasureUnit].
 `quantity` | `float` | Обязательно. Количество. Минимум `1e-10`.
