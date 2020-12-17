@@ -945,6 +945,29 @@ components:
           required:
             - account_uuid
 
+    Cubux.SelfAccountOperationLinkKey:
+      type: object
+      properties:
+        income_uuid:
+          type: string
+          format: uuid
+          description:
+            Income account operation UUID
+        expense_uuid:
+          type: string
+          format: uuid
+          description:
+            Expense account operation UUID
+      required:
+        - income_uuid
+        - expense_uuid
+
+    Cubux.SelfAccountOperationLink:
+      allOf:
+        - $ref: '#/components/schemas/Cubux.SelfAccountOperationLinkKey'
+        - description:
+            A link between specific income and expense account operations.
+
     Cubux.SelfCategory:
       type: object
       properties:
@@ -1156,6 +1179,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.SelfAccountOperation'
+        account_operation_link:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.SelfAccountOperationLink'
         capital_operation:
           type: array
           items:
@@ -1260,6 +1287,10 @@ components:
           $ref: '#/components/schemas/UuidKeysList'
         account_operation:
           $ref: '#/components/schemas/UuidKeysList'
+        account_operation_link:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.SelfAccountOperationLinkKey'
         capital_operation:
           $ref: '#/components/schemas/UuidKeysList'
         category:

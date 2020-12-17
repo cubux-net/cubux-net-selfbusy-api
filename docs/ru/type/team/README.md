@@ -24,6 +24,7 @@
 *   [`Cubux.ProductOperation`](product-operation.md)
 *   [`Cubux.SelfAccount`](account.md)
 *   [`Cubux.SelfAccountOperation`](account-operation.md)
+*   [`Cubux.SelfAccountOperationLink`](account-operation-link.md)
 *   [`Cubux.SelfCategory`](category.md)
 *   [`Cubux.SelfCategoryLink`](category-link.md)
 *   [`Cubux.SelfCategoryOperation`](category-operation.md)

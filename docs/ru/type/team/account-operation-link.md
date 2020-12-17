@@ -1,15 +1,15 @@
-Тип `Cubux.SelfCategoryLink`
+Тип `Cubux.SelfAccountOperationLink`
 ============================
 
-Связь между категориями дохода и расхода
-[`Cubux.SelfCategory`][Cubux.SelfCategory].
+Связь между операциями дохода и расхода
+[`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation].
 
 Объект со следующими полями:
 
 Поле | Тип | Описание
 ---- | --- | --------
-**`income_uuid`** PK  | `uuid` | UUID категории доходов
-**`expense_uuid`** PK | `uuid` | UUID категории расходов
+**`income_uuid`** PK  | `uuid` | UUID операции доходов
+**`expense_uuid`** PK | `uuid` | UUID операции расходов
 
 
-[Cubux.SelfCategory]: ./category.md
+[Cubux.SelfAccountOperation]: ./account-operation.md

@@ -15,6 +15,7 @@
 ---- | --- | --------
 `account` | `Array:`[`Cubux.SelfAccount`][Cubux.SelfAccount] | Справочник счетов
 `account_operation` | `Array:`[`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | Операции по счетам
+`account_operation_link` | `Array:`[`Cubux.SelfAccountOperationLink`][Cubux.SelfAccountOperationLink] | Связи между операциями по счетам
 `capital_operation` | `Array:`[`Cubux.CapitalOperation`][Cubux.CapitalOperation] | Операции по уставному капиталу
 `category` | `Array:`[`Cubux.SelfCategory`][Cubux.SelfCategory] | Справочник категорий
 `category_link` | `Array:`[`Cubux.SelfCategoryLink`][Cubux.SelfCategoryLink] | Связи между категориями
@@ -73,6 +74,7 @@
 [Cubux.ProductOperation]: ../team/product-operation.md
 [Cubux.SelfAccount]: ../team/account.md
 [Cubux.SelfAccountOperation]: ../team/account-operation.md
+[Cubux.SelfAccountOperationLink]: ../team/account-operation-link.md
 [Cubux.SelfCategory]: ../team/category.md
 [Cubux.SelfCategoryLink]: ../team/category-link.md
 [Cubux.SelfCategoryOperation]: ../team/category-operation.md
