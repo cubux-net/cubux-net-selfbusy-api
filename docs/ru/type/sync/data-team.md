@@ -15,11 +15,11 @@
 ---- | --- | --------
 `account` | `Array:`[`Cubux.SelfAccount`][Cubux.SelfAccount] | Справочник счетов
 `account_operation` | `Array:`[`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | Операции по счетам
-`account_operation_link` | `Array:`[`Cubux.SelfAccountOperationLink`][Cubux.SelfAccountOperationLink] | Связи между операциями по счетам
 `capital_operation` | `Array:`[`Cubux.CapitalOperation`][Cubux.CapitalOperation] | Операции по уставному капиталу
 `category` | `Array:`[`Cubux.SelfCategory`][Cubux.SelfCategory] | Справочник категорий
 `category_link` | `Array:`[`Cubux.SelfCategoryLink`][Cubux.SelfCategoryLink] | Связи между категориями
 `category_operation` | `Array:`[`Cubux.SelfCategoryOperation`][Cubux.SelfCategoryOperation] | Операции по категориям
+`category_operation_link` | `Array:`[`Cubux.SelfCategoryOperationLink`][Cubux.SelfCategoryOperationLink] | Связи между расходами по категориям и доходными категориями
 `category_specification` | `Array:`[`Cubux.SelfCategorySpecification`][Cubux.SelfCategorySpecification] | Связи категорий с тех.картами
 `customer` | `Array:`[`Cubux.Customer`][Cubux.Customer] | Справочник заказчиков
 `document` | `Array:`[`Cubux.Document`][Cubux.Document] | Документы
@@ -74,10 +74,10 @@
 [Cubux.ProductOperation]: ../team/product-operation.md
 [Cubux.SelfAccount]: ../team/account.md
 [Cubux.SelfAccountOperation]: ../team/account-operation.md
-[Cubux.SelfAccountOperationLink]: ../team/account-operation-link.md
 [Cubux.SelfCategory]: ../team/category.md
 [Cubux.SelfCategoryLink]: ../team/category-link.md
 [Cubux.SelfCategoryOperation]: ../team/category-operation.md
+[Cubux.SelfCategoryOperationLink]: ../team/category-operation-link.md
 [Cubux.SelfCategorySpecification]: ../team/category-specification.md
 [Cubux.SelfProject]: ../team/project.md
 [Cubux.Specification]: ../team/specification.md

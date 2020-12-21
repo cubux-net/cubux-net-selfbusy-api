@@ -945,29 +945,6 @@ components:
           required:
             - account_uuid
 
-    Cubux.SelfAccountOperationLinkKey:
-      type: object
-      properties:
-        income_uuid:
-          type: string
-          format: uuid
-          description:
-            Income account operation UUID
-        expense_uuid:
-          type: string
-          format: uuid
-          description:
-            Expense account operation UUID
-      required:
-        - income_uuid
-        - expense_uuid
-
-    Cubux.SelfAccountOperationLink:
-      allOf:
-        - $ref: '#/components/schemas/Cubux.SelfAccountOperationLinkKey'
-        - description:
-            A link between specific income and expense account operations.
-
     Cubux.SelfCategory:
       type: object
       properties:
@@ -1081,6 +1058,30 @@ components:
           required:
             - category_uuid
 
+    Cubux.SelfCategoryOperationLinkKey:
+      type: object
+      properties:
+        expense_op_uuid:
+          type: string
+          format: uuid
+          description:
+            Expense category operation UUID
+        income_cat_uuid:
+          type: string
+          format: uuid
+          description:
+            Income category UUID
+      required:
+        - expense_op_uuid
+        - income_cat_uuid
+
+    Cubux.SelfCategoryOperationLink:
+      allOf:
+        - $ref: '#/components/schemas/Cubux.SelfCategoryOperationLinkKey'
+        - description:
+            A link between specific expense category operations and income
+            categories.
+
     Cubux.SelfProject:
       type: object
       properties:
@@ -1179,10 +1180,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.SelfAccountOperation'
-        account_operation_link:
-          type: array
-          items:
-            $ref: '#/components/schemas/Cubux.SelfAccountOperationLink'
         capital_operation:
           type: array
           items:
@@ -1199,6 +1196,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.SelfCategoryOperation'
+        category_operation_link:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.SelfCategoryOperationLink'
         category_specification:
           type: array
           items:
@@ -1287,10 +1288,6 @@ components:
           $ref: '#/components/schemas/UuidKeysList'
         account_operation:
           $ref: '#/components/schemas/UuidKeysList'
-        account_operation_link:
-          type: array
-          items:
-            $ref: '#/components/schemas/Cubux.SelfAccountOperationLinkKey'
         capital_operation:
           $ref: '#/components/schemas/UuidKeysList'
         category:
@@ -1301,6 +1298,10 @@ components:
             $ref: '#/components/schemas/Cubux.SelfCategoryLinkKey'
         category_operation:
           $ref: '#/components/schemas/UuidKeysList'
+        category_operation_link:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.SelfCategoryOperationLinkKey'
         category_specification:
           $ref: '#/components/schemas/UuidKeysList'
         customer:
