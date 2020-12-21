@@ -15,6 +15,8 @@
 `uuid` **PK** | `uuid` | Обязательно. UUID используется в других объектах операций, относящихся к данному документу.
 `type` | `string` | Обязательно. Тип документа определяет набор операций. Значения см. ниже.
 `datetime` | `datetime` | Дата и время
+`project_uuid`  | `uuid`, NULL | UUID проекта [`Cubux.SelfProject`][Cubux.SelfProject].
+`comment` | `string` | Комментарий. Максимум 4000 символов.
 
 **Важно**: Изменение отдельных операций (частей документа) невозможно. Для
 достижения результата необходимо выполнять удаление старого документа и создание
@@ -188,3 +190,4 @@
 [Cubux.ProductOperation]: ./product-operation.md
 [Cubux.SelfAccountOperation]: ./account-operation.md
 [Cubux.SelfCategoryOperation]: ./category-operation.md
+[Cubux.SelfProject]: ./project.md

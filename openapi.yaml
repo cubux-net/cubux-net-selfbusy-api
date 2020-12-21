@@ -527,6 +527,14 @@ components:
         datetime:
           type: string
           format: 'date-time'
+        project_uuid:
+          type: string
+          format: uuid
+          nullable: true
+          default: null
+        comment:
+          type: string
+          maxLength: 4000
       required:
         - uuid
         - type
