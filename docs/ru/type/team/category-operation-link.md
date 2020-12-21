@@ -10,8 +10,8 @@
 
 Поле | Тип | Описание
 ---- | --- | --------
-**`income_uuid`** PK  | `uuid` | UUID операции доходов
-**`expense_uuid`** PK | `uuid` | UUID операции расходов
+**`expense_op_uuid`** PK | `uuid` | UUID операции расхода по категории
+**`income_cat_uuid`** PK  | `uuid` | UUID категории доходов
 
 
 [Cubux.SelfCategoryOperation]: ./category.md
