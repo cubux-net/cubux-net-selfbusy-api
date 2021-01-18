@@ -38,6 +38,7 @@
 `product_add_specification` | `Array:`[`Cubux.ProductAddSpecification`][Cubux.ProductAddSpecification] | Дополнительные затраты тех.карт в структуре продуктов **\*1)**
 `product_operation` | `Array:`[`Cubux.ProductOperation`][Cubux.ProductOperation] | Операции по продуктам на складе
 `project` | `Array:`[`Cubux.SelfProject`][Cubux.SelfProject] | Справочник проектов
+`settings` | [`Cubux.SelfSettings`][Cubux.SelfSettings] | Настройки
 `specification` | `Array:`[`Cubux.Specification`][Cubux.Specification] | Техкарты
 `specification_ingredient` | `Array:`[`Cubux.SpecificationIngredient`][Cubux.SpecificationIngredient] | Ингредиенты техкарт
 
@@ -80,5 +81,6 @@
 [Cubux.SelfCategoryOperationLink]: ../team/category-operation-link.md
 [Cubux.SelfCategorySpecification]: ../team/category-specification.md
 [Cubux.SelfProject]: ../team/project.md
+[Cubux.SelfSettings]: ../team/settings.md
 [Cubux.Specification]: ../team/specification.md
 [Cubux.SpecificationIngredient]: ../team/specification-ingredient.md

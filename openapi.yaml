@@ -1104,6 +1104,13 @@ components:
       required:
         - name
 
+    Cubux.SelfSettings:
+      type: object
+      properties:
+        materials_limit:
+          type: number
+          minimum: 0
+
     Cubux.Specification:
       type: object
       properties:
@@ -1280,6 +1287,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.SelfProject'
+        settings:
+          $ref: '#/components/schemas/Cubux.SelfSettings'
         specification:
           type: array
           items:
@@ -1288,6 +1297,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.SpecificationIngredient'
+
+    Cubux.Team.ObjectsPatch:
+      allOf:
+        - $ref: '#/components/schemas/Cubux.Team.Objects'
+        - type: object
+          properties:
+            settings:
+              nullable: true
 
     Cubux.Team.DeletionsPatch:
       type: object
@@ -1371,6 +1388,8 @@ components:
         - $ref: '#/components/schemas/Cubux.Team.Snapshot'
         - type: object
           properties:
+            objects:
+              $ref: '#/components/schemas/Cubux.Team.ObjectsPatch'
             deleted_objects:
               $ref: '#/components/schemas/Cubux.Team.Deletions'
 
