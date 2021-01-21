@@ -818,6 +818,10 @@ components:
       properties:
         hash:
           $ref: '#/components/schemas/productHash'
+        ver:
+          type: integer
+          minimum: 1
+          readOnly: true
         category_uuid:
           type: string
           format: uuid
@@ -849,6 +853,17 @@ components:
             floating point precision.
       required:
         - parent_product_hash
+
+    Cubux.ProductAddCategory:
+      allOf:
+        - $ref: '#/components/schemas/Cubux.ProductAddBase'
+        - type: object
+          properties:
+            category_uuid:
+              type: string
+              format: uuid
+          required:
+            - category_uuid
 
     Cubux.ProductAddMaterial:
       allOf:
@@ -1267,6 +1282,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.Product'
+        product_add_category:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.ProductAddCategory'
         product_add_material:
           type: array
           items:

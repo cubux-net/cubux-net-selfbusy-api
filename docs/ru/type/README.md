@@ -22,6 +22,7 @@
     *   [`Cubux.OrderProductOperation`](team/order-product-operation.md)
     *   [`Cubux.OrderSellOperation`](team/order-sell-operation.md)
     *   [`Cubux.Product`](team/product.md)
+    *   [`Cubux.ProductAddCategory`](team/product-add-category.md)
     *   [`Cubux.ProductAddMaterial`](team/product-add-material.md)
     *   [`Cubux.ProductAddProduct`](team/product-add-product.md)
     *   [`Cubux.ProductAddSpecification`](team/product-add-specification.md)

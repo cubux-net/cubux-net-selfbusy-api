@@ -33,6 +33,7 @@
 `order_product_operation` | `Array:`[`Cubux.OrderProductOperation`][Cubux.OrderProductOperation] | Операции по продуктам и услугам в заказе
 `order_sell_operation` | `Array:`[`Cubux.OrderSellOperation`][Cubux.OrderSellOperation] | Операции по позициям в заказе
 `product` | `Array:`[`Cubux.Product`][Cubux.Product] | Описание структуры продуктов **\*1)**
+`product_add_category` | `Array:`[`Cubux.ProductAddCategory`][Cubux.ProductAddCategory] | Дополнительные затраты категорий в структуре продуктов **\*1)**
 `product_add_material` | `Array:`[`Cubux.ProductAddMaterial`][Cubux.ProductAddMaterial] | Дополнительные затраты материалов в структуре продуктов **\*1)**
 `product_add_product` | `Array:`[`Cubux.ProductAddProduct`][Cubux.ProductAddProduct] | Дополнительные затраты иных продуктов в структуре продуктов **\*1)**
 `product_add_specification` | `Array:`[`Cubux.ProductAddSpecification`][Cubux.ProductAddSpecification] | Дополнительные затраты тех.карт в структуре продуктов **\*1)**
@@ -69,6 +70,7 @@
 [Cubux.OrderProductOperation]: ../team/order-product-operation.md
 [Cubux.OrderSellOperation]: ../team/order-sell-operation.md
 [Cubux.Product]: ../team/product.md
+[Cubux.ProductAddCategory]: ../team/product-add-category.md
 [Cubux.ProductAddMaterial]: ../team/product-add-material.md
 [Cubux.ProductAddProduct]: ../team/product-add-product.md
 [Cubux.ProductAddSpecification]: ../team/product-add-specification.md

@@ -18,6 +18,7 @@
 *   [`Cubux.OrderProductOperation`](order-product-operation.md)
 *   [`Cubux.OrderSellOperation`](order-sell-operation.md)
 *   [`Cubux.Product`](product.md)
+*   [`Cubux.ProductAddCategory`](product-add-category.md)
 *   [`Cubux.ProductAddMaterial`](product-add-material.md)
 *   [`Cubux.ProductAddProduct`](product-add-product.md)
 *   [`Cubux.ProductAddSpecification`](product-add-specification.md)
