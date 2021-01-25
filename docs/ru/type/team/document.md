@@ -53,6 +53,7 @@
 Операция | Направление | Кол-во | Описание
 -------- | ----------- | ------ | --------
 [`Cubux.CapitalOperation`][Cubux.CapitalOperation] | `0` - in | 1 | Оборот продукта
+[`Cubux.CapitalOperation`][Cubux.CapitalOperation] | `1` - out | 1 | Оборот продукта
 [`Cubux.MaterialOperation`][Cubux.MaterialOperation] | `1` - out | 0..n | Расход материалов со склада
 [`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `0` - in | 1 | Поступление средств на счёт
 
@@ -141,6 +142,7 @@
 Операция | Направление | Кол-во | Описание
 -------- | ----------- | ------ | --------
 [`Cubux.CapitalOperation`][Cubux.CapitalOperation] | `0` - in | 1 | Оборот продукта
+[`Cubux.CapitalOperation`][Cubux.CapitalOperation] | `1` - out | 1 | Оборот продукта
 [`Cubux.OrderProductOperation`][Cubux.OrderProductOperation] | `1` - out | 1 | Списание продукта из заказа
 [`Cubux.OrderSellOperation`][Cubux.OrderSellOperation] | `0` - in | 1 | Исполнение обязательства обеспечить продукт для заказа
 
@@ -177,6 +179,7 @@
 Операция | Направление | Кол-во | Описание
 -------- | ----------- | ------ | --------
 [`Cubux.CapitalOperation`][Cubux.CapitalOperation] | `0` - in | 1 | Оборот продукта
+[`Cubux.CapitalOperation`][Cubux.CapitalOperation] | `1` - out | 1 | Оборот продукта
 [`Cubux.SelfAccountOperation`][Cubux.SelfAccountOperation] | `0` - in | 1 | Поступление средств на счёт
 [`Cubux.ProductOperation`][Cubux.ProductOperation] | `1` - out | 1 | Списание продукта со склада
 
