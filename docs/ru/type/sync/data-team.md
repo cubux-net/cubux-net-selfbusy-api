@@ -41,6 +41,7 @@
 `project` | `Array:`[`Cubux.SelfProject`][Cubux.SelfProject] | Справочник проектов
 `settings` | [`Cubux.SelfSettings`][Cubux.SelfSettings] | Настройки
 `specification` | `Array:`[`Cubux.Specification`][Cubux.Specification] | Техкарты
+`specification_group` | `Array:`[`Cubux.SpecificationGroup`][Cubux.SpecificationGroup] | Группы в техкартах для группировки ингредиентов
 `specification_ingredient` | `Array:`[`Cubux.SpecificationIngredient`][Cubux.SpecificationIngredient] | Ингредиенты техкарт
 
 **\*1)**: Справочник структуры продуктов представляет собой динамический
@@ -85,4 +86,5 @@
 [Cubux.SelfProject]: ../team/project.md
 [Cubux.SelfSettings]: ../team/settings.md
 [Cubux.Specification]: ../team/specification.md
+[Cubux.SpecificationGroup]: ../team/specification-group.md
 [Cubux.SpecificationIngredient]: ../team/specification-ingredient.md

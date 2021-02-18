@@ -36,4 +36,5 @@
     *   [`Cubux.SelfProject`](team/project.md)
     *   [`Cubux.SelfSettings`](team/settings.md)
     *   [`Cubux.Specification`](team/specification.md)
+    *   [`Cubux.SpecificationGroup`](team/specification-group.md)
     *   [`Cubux.SpecificationIngredient`](team/specification-ingredient.md)

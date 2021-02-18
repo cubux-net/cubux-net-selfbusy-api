@@ -184,7 +184,7 @@ components:
   schemas:
     null:
       type: object
-      description: Just `null` value. This a a stub for OpenAPI/3.1 `"null"` type.
+      description: Just `null` value. This is a stub for OpenAPI/3.1 `"null"` type.
       nullable: true
       default: null
       example: null
@@ -1152,6 +1152,37 @@ components:
         A receipt describing ingredients to create specific product out of
         source materials.
 
+    Cubux.SpecificationGroup:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        specification_uuid:
+          type: string
+          format: uuid
+          description:
+            Specification `Cubux.Specification` to which this belongs to.
+            Can only be assigned to new object and cannot be changed later.
+        name:
+          type: string
+          minLength: 1
+          maxLength: 128
+          example: Cream
+        comment:
+          type: string
+          maxLength: 8000
+        sort:
+          type: integer
+          minimum: 0
+          maximum: 65535
+          default: 0
+      required:
+        - specification_uuid
+        - name
+      description:
+        A group to optionally split ingredients into groups.
+
     Cubux.SpecificationIngredient:
       type: object
       properties:
@@ -1164,6 +1195,13 @@ components:
           description:
             Specification `Cubux.Specification` to which this belongs to.
             Can only be assigned to new object and cannot be changed later.
+        group_uuid:
+          type: string
+          format: uuid
+          nullable: true
+          default: null
+          description:
+            Optional group `Cubux.SpecificationGroup` to which this belongs to.
         source_uuid:
           type: string
           format: uuid
@@ -1313,6 +1351,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cubux.Specification'
+        specification_group:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cubux.SpecificationGroup'
         specification_ingredient:
           type: array
           items:
@@ -1376,6 +1418,8 @@ components:
         project:
           $ref: '#/components/schemas/UuidKeysList'
         specification:
+          $ref: '#/components/schemas/UuidKeysList'
+        specification_group:
           $ref: '#/components/schemas/UuidKeysList'
         specification_ingredient:
           $ref: '#/components/schemas/UuidKeysList'
