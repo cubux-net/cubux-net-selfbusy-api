@@ -596,7 +596,7 @@ components:
         - type: object
           properties:
             amount:
-              minimum: 1e-10
+              minimum: 0
             amount_dummy:
               type: boolean
               default: false
@@ -963,6 +963,8 @@ components:
         - $ref: '#/components/schemas/Cubux.BaseOperation'
         - type: object
           properties:
+            amount:
+              minimum: 0
             account_uuid:
               type: string
               format: uuid

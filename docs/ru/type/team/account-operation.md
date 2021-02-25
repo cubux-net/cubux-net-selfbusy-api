@@ -11,7 +11,7 @@
 `uuid` **PK** | `uuid` | UUID операции.
 `doc_uuid` | `uuid` | Обязательно. UUID документа, к которому относится.
 `side` | [`Cubux.OperationSide`][Cubux.OperationSide] | Обязательно. Направление операции.
-`amount` | `float` | Обязательно. Сумма. Минимум `0.01`.
+`amount` | `float` | Обязательно. Сумма. Минимум `0`.
 `account_uuid` | `uuid` | Обязательно. UUID счёта [`Cubux.SelfAccount`][Cubux.SelfAccount].
 
 **Важно**: Объекты данного типа должны обрабатываться только вместе с
