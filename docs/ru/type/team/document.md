@@ -124,7 +124,9 @@
 
 Операция | Направление | Кол-во | Описание
 -------- | ----------- | ------ | --------
+[`Cubux.OrderPayOperation`][Cubux.OrderPayOperation] | `1` - out | 1 | Уменьшение долга заказчика за заказ
 [`Cubux.OrderProductOperation`][Cubux.OrderProductOperation] | `1` - out | 1 | Списание продукта из заказа
+[`Cubux.OrderSellOperation`][Cubux.OrderSellOperation] | `0` - in | 1 | Снятие обязательства по обеспечению продукт для заказа
 
 #### `order_income` (5)
 
