@@ -888,6 +888,11 @@ components:
           properties:
             product_hash:
               $ref: '#/components/schemas/productHash'
+            source:
+              type: string
+              enum:
+                - ""
+                - source
           required:
             - product_hash
 
